@@ -1,202 +1,252 @@
 {
-    "É assim que acaba": {
+    "0": {
+        "nome": "É assim que acaba",
         "autor": "Colleen Hoover",
-        "quantidade": 39
+        "quantidade": 49
     },
-    "É assim que começa": {
+    "1": {
+        "nome": "É assim que começa",
         "autor": "Colleen Hoover",
-        "quantidade": 25
+        "quantidade": 8
     },
-    "A Hipótese do Amor": {
+    "2": {
+        "nome": "A Hipótese do Amor",
         "autor": "Ali Hazelwood",
-        "quantidade": 25
+        "quantidade": 14
     },
-    "Uma Breve História do Tempo": {
+    "3": {
+        "nome": "Uma Breve História do Tempo",
         "autor": "Stephen Hawking",
-        "quantidade": 47
+        "quantidade": 12
     },
-    "O Universo Numa Casca de Noz": {
+    "4": {
+        "nome": "O Universo Numa Casca de Noz",
         "autor": "Stephen Hawking",
-        "quantidade": 42
+        "quantidade": 14
     },
-    "O Universo Elegante": {
+    "5": {
+        "nome": "O Universo Elegante",
         "autor": "Brian Greene",
-        "quantidade": 30
+        "quantidade": 37
     },
-    "Breves Respostas para Grandes Questões": {
+    "6": {
+        "nome": "Breves Respostas para Grandes Questões",
         "autor": "Stephen Hawking",
-        "quantidade": 22
+        "quantidade": 23
     },
-    "O Homem de Giz": {
+    "7": {
+        "nome": "O Homem de Giz",
         "autor": "C. J. Tudor",
-        "quantidade": 50
-    },
-    "Manual de Assassinato para Boas Garotas": {
-        "autor": "Holly Jackson",
-        "quantidade": 1
-    },
-    "Anatomia do Mal": {
-        "autor": "Harold Schechter",
-        "quantidade": 11
-    },
-    "Os Sertões": {
-        "autor": "Euclides da Cunha",
         "quantidade": 34
     },
-    "O Gato Malhado e a Andorinha Sinhá": {
-        "autor": "Jorge Amado",
-        "quantidade": 42
+    "8": {
+        "nome": "Manual de Assassinato para Boas Garotas",
+        "autor": "Holly Jackson",
+        "quantidade": 10
     },
-    "O Jardim das Borboletas": {
-        "autor": "Dot Hutchison",
-        "quantidade": 16
-    },
-    "Capitães da Areia": {
-        "autor": "Jorge Amado",
-        "quantidade": 40
-    },
-    "O Príncipe Cruel": {
-        "autor": "Holly Black",
+    "9": {
+        "nome": "Anatomia do Mal",
+        "autor": "Harold Schechter",
         "quantidade": 45
     },
-    "O Senhor dos Anéis- A Sociedade do Anel": {
-        "autor": "J.R.R. Tolkien",
-        "quantidade": 30
+    "10": {
+        "nome": "Os Sertões",
+        "autor": "Euclides da Cunha",
+        "quantidade": 43
     },
-    "Drácula": {
-        "autor": "Bram Stoker",
-        "quantidade": 27
-    },
-    "O Pequeno Príncipe": {
-        "autor": "Antoine de Saint-Exupéry",
-        "quantidade": 11
-    },
-    "O Menino do Pijama Listrado": {
-        "autor": "John Boyne",
-        "quantidade": 36
-    },
-    "Memórias Póstumas de Brás Cubas": {
-        "autor": "Machado de Assis",
-        "quantidade": 50
-    },
-    "Ai Meus Deuses": {
-        "autor": "Tera Lynn Childs",
-        "quantidade": 18
-    },
-    "50 Ideias de Física Quântica que Você Precisa Conhecer": {
-        "autor": "Joanne Baker",
-        "quantidade": 31
-    },
-    "50 Tons de Cinza": {
-        "autor": "E. L. James",
-        "quantidade": 16
-    },
-    "Moby Dick": {
-        "autor": "Herman Melville",
-        "quantidade": 5
-    },
-    "Não Conte a Ninguém": {
-        "autor": "Harlan Coben",
+    "11": {
+        "nome": "O Gato Malhado e a Andorinha Sinhá",
+        "autor": "Jorge Amado",
         "quantidade": 22
     },
-    "Harry Potter e a Pedra Filosofal": {
-        "autor": "J.K. Rowling",
+    "12": {
+        "nome": "O Jardim das Borboletas",
+        "autor": "Dot Hutchison",
+        "quantidade": 40
+    },
+    "13": {
+        "nome": "Capitães da Areia",
+        "autor": "Jorge Amado",
+        "quantidade": 23
+    },
+    "14": {
+        "nome": "O Príncipe Cruel",
+        "autor": "Holly Black",
+        "quantidade": 25
+    },
+    "15": {
+        "nome": "O Senhor dos Anéis- A Sociedade do Anel",
+        "autor": "J.R.R. Tolkien",
         "quantidade": 44
     },
-    "As Crônicas de Nárnia": {
+    "16": {
+        "nome": "Drácula",
+        "autor": "Bram Stoker",
+        "quantidade": 32
+    },
+    "17": {
+        "nome": "O Pequeno Príncipe",
+        "autor": "Antoine de Saint-Exupéry",
+        "quantidade": 1
+    },
+    "18": {
+        "nome": "O Menino do Pijama Listrado",
+        "autor": "John Boyne",
+        "quantidade": 1
+    },
+    "19": {
+        "nome": "Memórias Póstumas de Brás Cubas",
+        "autor": "Machado de Assis",
+        "quantidade": 37
+    },
+    "20": {
+        "nome": "Ai Meus Deuses",
+        "autor": "Tera Lynn Childs",
+        "quantidade": 32
+    },
+    "21": {
+        "nome": "50 Ideias de Física Quântica que Você Precisa Conhecer",
+        "autor": "Joanne Baker",
+        "quantidade": 19
+    },
+    "22": {
+        "nome": "50 Tons de Cinza",
+        "autor": "E. L. James",
+        "quantidade": 44
+    },
+    "23": {
+        "nome": "Moby Dick",
+        "autor": "Herman Melville",
+        "quantidade": 39
+    },
+    "24": {
+        "nome": "Não Conte a Ninguém",
+        "autor": "Harlan Coben",
+        "quantidade": 48
+    },
+    "25": {
+        "nome": "Harry Potter e a Pedra Filosofal",
+        "autor": "J.K. Rowling",
+        "quantidade": 5
+    },
+    "26": {
+        "nome": "As Crônicas de Nárnia",
         "autor": "C.S. Lewis",
-        "quantidade": 7
+        "quantidade": 32
     },
-    "Percy Jackson e Os Olimpianos- ladrão de raios": {
+    "27": {
+        "nome": "Percy Jackson e Os Olimpianos- ladrão de raios",
         "autor": "Rick Riordan",
-        "quantidade": 15
-    },
-    "Morro dos Ventos Uivantes": {
-        "autor": "Emily Brontë",
         "quantidade": 50
     },
-    "Orgulho e Preconceito": {
+    "28": {
+        "nome": "Morro dos Ventos Uivantes",
+        "autor": "Emily Brontë",
+        "quantidade": 43
+    },
+    "29": {
+        "nome": "Orgulho e Preconceito",
+        "autor": "Jane Austen",
+        "quantidade": 13
+    },
+    "30": {
+        "nome": "Razão e Sensibilidade",
         "autor": "Jane Austen",
         "quantidade": 3
     },
-    "Razão e Sensibilidade": {
-        "autor": "Jane Austen",
-        "quantidade": 43
-    },
-    "1984": {
+    "31": {
+        "nome": "1984",
         "autor": "George Orwell",
-        "quantidade": 36
+        "quantidade": 32
     },
-    "Macunaíma": {
+    "32": {
+        "nome": "Macunaíma",
         "autor": "Mário de Andrade",
-        "quantidade": 42
-    },
-    "Grande Sertão Veredas": {
-        "autor": "João Guimarães Rosa",
-        "quantidade": 1
-    },
-    "Dom Casmurro": {
-        "autor": "Machado de Assis",
-        "quantidade": 7
-    },
-    "O Cortiço": {
-        "autor": "Aluísio Azevedo",
         "quantidade": 6
     },
-    "Gabriela Cravo e Canela": {
-        "autor": "Jorge Amado",
-        "quantidade": 5
+    "33": {
+        "nome": "Grande Sertão Veredas",
+        "autor": "João Guimarães Rosa",
+        "quantidade": 36
     },
-    "Vidas Secas": {
+    "34": {
+        "nome": "Dom Casmurro",
+        "autor": "Machado de Assis",
+        "quantidade": 1
+    },
+    "35": {
+        "nome": "O Cortiço",
+        "autor": "Aluísio Azevedo",
+        "quantidade": 35
+    },
+    "36": {
+        "nome": "Gabriela Cravo e Canela",
+        "autor": "Jorge Amado",
+        "quantidade": 47
+    },
+    "37": {
+        "nome": "Vidas Secas",
         "autor": "Graciliano Ramos",
+        "quantidade": 11
+    },
+    "38": {
+        "nome": "A Moreninha",
+        "autor": "Joaquim Manuel de Macedo",
         "quantidade": 14
     },
-    "A Moreninha": {
-        "autor": "Joaquim Manuel de Macedo",
-        "quantidade": 28
+    "39": {
+        "nome": "Iracema",
+        "autor": "José de Alencar",
+        "quantidade": 18
     },
-    "Iracema": {
+    "40": {
+        "nome": "O Ateneu",
+        "autor": "Raul Pompeia",
+        "quantidade": 1
+    },
+    "41": {
+        "nome": "A Escrava Isaura",
+        "autor": "Bernardo Guimarães",
+        "quantidade": 16
+    },
+    "42": {
+        "nome": "O Guarani",
         "autor": "José de Alencar",
         "quantidade": 19
     },
-    "O Ateneu": {
-        "autor": "Raul Pompeia",
-        "quantidade": 4
-    },
-    "A Escrava Isaura": {
-        "autor": "Bernardo Guimarães",
-        "quantidade": 30
-    },
-    "O Guarani": {
-        "autor": "José de Alencar",
-        "quantidade": 7
-    },
-    "A divina Comédia": {
+    "43": {
+        "nome": "A divina Comédia",
         "autor": "Dante Alighieri",
-        "quantidade": 45
+        "quantidade": 3
     },
-    "Dom Quixote": {
+    "44": {
+        "nome": "Dom Quixote",
         "autor": "Miguel de Cervantes",
-        "quantidade": 40
+        "quantidade": 28
     },
-    "Frankenstein": {
+    "45": {
+        "nome": "Frankenstein",
         "autor": "Mary Shelley",
-        "quantidade": 16
+        "quantidade": 15
     },
-    "Os Três Mosqueteiros": {
+    "46": {
+        "nome": "Os Três Mosqueteiros",
         "autor": "Alexandre Dumas",
-        "quantidade": 34
+        "quantidade": 11
     },
-    "Os Miseráveis": {
+    "47": {
+        "nome": "Os Miseráveis",
         "autor": "Victor Hugo",
-        "quantidade": 36
+        "quantidade": 24
     },
-    "O Corvo": {
+    "48": {
+        "nome": "O Corvo",
         "autor": "Edgar Allan Poe",
-        "quantidade": 47
+        "quantidade": 8
     },
-    "Madame Bovary": {
+    "49": {
+        "nome": "Madame Bovary",
         "autor": "Gustave Flaubert",
-        "quantidade": 46
+        "quantidade": 17
     }
 }
