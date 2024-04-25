@@ -1,6 +1,6 @@
 
-getCatalogo().then(response => {console.log(response)})
-
+// getCatalogo().then(response => {console.log(response)})
+removerlivro().then(data => {})
 
 async function getCatalogo()
 {
@@ -12,7 +12,9 @@ async function getCatalogo()
 
 function mostrarCatalogo()
 {
-
+    //limpar div dos catalogos
+    
+    //criar novos items referentes ao dicionario e dar append na div dos catalogos
 }
 
 {/* <div class="col-sm-4">
@@ -24,23 +26,23 @@ function mostrarCatalogo()
 </div> */}
 
 
-function removerlivro(nome)
+async function removerlivro(nome)
 {
-    // chamar buscar
-    fetch(`http://127.0.0.1:5000/removerlivro/${49}`,{
-    method: 'DELETE'
-    })
-    .then(data => {
-    return data.json();
-    })
-    .then(post => {
-    console.log(post);
-    });
+    let id = buscarLivro(await getCatalogo(), "É assim que acaba")
+    let response = await fetch(`http://127.0.0.1:5000/removerlivro/${id}`, { method: 'DELETE' })
+    let data = await response.json()
 
+    console.log(data)
 }
 
-function buscarLivro(nome)
+function buscarLivro(dicionario, nomeDoLivro)
 {   
-    let id;
-    return id
+    // console.log(dicionario)
+    Object.entries(dicionario).forEach(([key, value]) => {
+        if(value['nome'] == nomeDoLivro)
+        {
+            return key
+        }
+        console.log(value)
+    });
 }
