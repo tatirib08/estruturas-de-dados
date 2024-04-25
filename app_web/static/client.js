@@ -1,17 +1,18 @@
 
-getcatalogo().then(response => {console.log(response)})
+getCatalogo().then(response => {console.log(response)})
 
- async function getcatalogo()
+
+async function getCatalogo()
 {
-    
-    const response = await fetch('http://127.0.0.1:5000/getcatalogo')
-    // .then(data => {
-    //     return data.json()
-    // })
-    // .then(post => {
-    //     return post
-    // })
-    return response.json()
+    let response = await fetch('http://127.0.0.1:5000/getcatalogo')
+    let data = await response.json()
+   
+    return data
+}
+
+function mostrarCatalogo()
+{
+
 }
 
 {/* <div class="col-sm-4">
@@ -39,7 +40,7 @@ function removerlivro(nome)
 }
 
 function buscarLivro(nome)
-{
-    getcatalogo()
+{   
+    let id;
     return id
 }
