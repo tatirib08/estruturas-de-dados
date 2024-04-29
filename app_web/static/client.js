@@ -46,7 +46,6 @@ async function mostrarCatalogo(dicionario)
         let painelImg = document.createElement("img");
         painelImg.classList.add("capaLivro");
         painel1.appendChild(painelImg); 
-        // painelImg.innerHTML = urlLivro;
         painelImg.src = urlLivro;
 
         let painelAutor = document.createElement("div");
