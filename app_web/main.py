@@ -1,4 +1,4 @@
-from flask import Flask, url_for, render_template, jsonify
+from flask import Flask, url_for, render_template, jsonify, send_from_directory
 from arquivo import Livros
 app = Flask(__name__)
 
@@ -15,14 +15,15 @@ def sobre1():
 
 @app.route('/getcatalogo', methods=['GET'])
 def get_catalogo():
-    # dicionario de catalogo
     return jsonify(livros.catalogo), 201
 
 @app.route('/removerlivro/<int:livro_id>', methods=['DELETE'])
 def removerLivro(livro_id):
     del livros.catalogo[livro_id]
-    # dicionario de catalogo
     return jsonify(livros.catalogo), 201
 
+@app.route('/download', methods=['GET'])
+def baixarCatalogo():
+    return send_from_directory('temp', 'catalogo.json', as_attachment=True)
 
 app.run(debug = True)
