@@ -24,9 +24,11 @@ async function mostrarCatalogo(dicionario)
     let catalogo = document.getElementById("catalogo");
     Object.entries(dicionario).forEach(([key, value]) => {
     
+        /* pega os dados do json */
         nomeLivro = value['nome'];
         autorLivro = value['autor'];
         estoqueLivro = value['quantidade'];
+        urlLivro = value['img'];
 
         let quadradoGrande = document.createElement("div");
         quadradoGrande.classList.add("col-sm-4");
@@ -40,11 +42,12 @@ async function mostrarCatalogo(dicionario)
         painelNome.classList.add("nomeLivro");
         painel1.appendChild(painelNome);
         painelNome.innerHTML = nomeLivro;
-
-        let painelImg = document.createElement("div");
+        
+        let painelImg = document.createElement("img");
         painelImg.classList.add("capaLivro");
         painel1.appendChild(painelImg); 
-        //botar o url da img
+        // painelImg.innerHTML = urlLivro;
+        painelImg.src = urlLivro;
 
         let painelAutor = document.createElement("div");
         painelAutor.classList.add("autorLivro");
