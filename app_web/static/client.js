@@ -1,7 +1,8 @@
-getCatalogo().then(response => {console.log(response)})
+// getCatalogo().then(response => {console.log(response)})
+getCatalogo().then(response => {mostrarCatalogo(response)})
 // baixarCatalogo().then()
 // removerlivro().then(data => {})
-mostrarCatalogo().then(response =>{console.log(response)})
+// mostrarCatalogo().then(response =>{console.log(response)})
 async function getCatalogo()
 {
     let response = await fetch('http://127.0.0.1:5000/getcatalogo')
@@ -10,15 +11,54 @@ async function getCatalogo()
     return data
 }
 
-async function mostrarCatalogo()
+async function mostrarCatalogo(dicionario)
 {
-    //limpar div dos catalogos
-    // let response = await fetch('http://127.0.0.1:5000/mostrarCatalogo')
-    // let data = await response.json()
+
+    let nomeLivro;
+    let autorLivro;
+    let estoqueLivro; 
     getCatalogo()
     //criar novos items referentes ao dicionario e dar append na div dos catalogos
-    document.getElementById("capaLivro").src = "https://m.media-amazon.com/images/I/51i7kH+rh9L._SY445_SX342_.jpg";
-    return data
+    // document.getElementById("capaLivro").src = "https://m.media-amazon.com/images/I/51i7kH+rh9L._SY445_SX342_.jpg";
+
+    let catalogo = document.getElementById("catalogo");
+    Object.entries(dicionario).forEach(([key, value]) => {
+    
+        nomeLivro = value['nome'];
+        autorLivro = value['autor'];
+        estoqueLivro = value['quantidade'];
+
+        let quadradoGrande = document.createElement("div");
+        quadradoGrande.classList.add("col-sm-4");
+        catalogo.appendChild(quadradoGrande);
+
+        let painel1 = document.createElement("div");
+        painel1.classList.add("painel1");
+        quadradoGrande.appendChild(painel1);
+
+        let painelNome = document.createElement("div");
+        painelNome.classList.add("nomeLivro");
+        painel1.appendChild(painelNome);
+        painelNome.innerHTML = nomeLivro;
+
+        let painelImg = document.createElement("div");
+        painelImg.classList.add("capaLivro");
+        painel1.appendChild(painelImg); 
+        //botar o url da img
+
+        let painelAutor = document.createElement("div");
+        painelAutor.classList.add("autorLivro");
+        painel1.appendChild(painelAutor);
+        painelAutor.innerHTML = autorLivro;
+
+        let painelEstoque = document.createElement("div");
+        painelEstoque.classList.add("quantidadeLivro");
+        painel1.appendChild(painelEstoque);
+        painelEstoque.innerHTML = estoqueLivro;
+
+        
+        // console.log(value)
+    });
 }
 
 {/* <div class="col-sm-4">
