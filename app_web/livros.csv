@@ -1,51 +1,51 @@
-nome,autor
-"É assim que acaba","Colleen Hoover"
-"É assim que começa","Colleen Hoover"
-"A Hipótese do Amor","Ali Hazelwood"
-"Uma Breve História do Tempo","Stephen Hawking"
-"O Universo Numa Casca de Noz","Stephen Hawking"
-"O Universo Elegante","Brian Greene"
-"Breves Respostas para Grandes Questões","Stephen Hawking"
-"O Homem de Giz","C. J. Tudor"
-"Manual de Assassinato para Boas Garotas","Holly Jackson"
-"Anatomia do Mal","Harold Schechter"
-"Os Sertões","Euclides da Cunha"
-"O Gato Malhado e a Andorinha Sinhá","Jorge Amado"
-"O Jardim das Borboletas","Dot Hutchison"
-"Capitães da Areia","Jorge Amado"
-"O Príncipe Cruel","Holly Black"
-"O Senhor dos Anéis- A Sociedade do Anel","J.R.R. Tolkien"
-Drácula,"Bram Stoker"
-"O Pequeno Príncipe","Antoine de Saint-Exupéry"
-"O Menino do Pijama Listrado","John Boyne"
-"Memórias Póstumas de Brás Cubas","Machado de Assis"
-"Ai Meus Deuses","Tera Lynn Childs"
-"50 Ideias de Física Quântica que Você Precisa Conhecer","Joanne Baker"
-"50 Tons de Cinza","E. L. James"
-"Moby Dick","Herman Melville"
-"Não Conte a Ninguém","Harlan Coben"
-"Harry Potter e a Pedra Filosofal","J.K. Rowling"
-"As Crônicas de Nárnia","C.S. Lewis"
-"Percy Jackson e Os Olimpianos- ladrão de raios","Rick Riordan"
-"Morro dos Ventos Uivantes","Emily Brontë"
-"Orgulho e Preconceito","Jane Austen"
-"Razão e Sensibilidade","Jane Austen"
-1984,"George Orwell"
-Macunaíma,"Mário de Andrade"
-"Grande Sertão Veredas","João Guimarães Rosa"
-"Dom Casmurro","Machado de Assis"
-"O Cortiço","Aluísio Azevedo"
-"Gabriela Cravo e Canela","Jorge Amado"
-"Vidas Secas","Graciliano Ramos"
-"A Moreninha","Joaquim Manuel de Macedo"
-Iracema,"José de Alencar"
-"O Ateneu","Raul Pompeia"
-"A Escrava Isaura","Bernardo Guimarães"
-"O Guarani","José de Alencar"
-"A divina Comédia","Dante Alighieri"
-"Dom Quixote","Miguel de Cervantes"
-Frankenstein,"Mary Shelley"
-"Os Três Mosqueteiros","Alexandre Dumas"
-"Os Miseráveis","Victor Hugo"
-"O Corvo","Edgar Allan Poe"
-"Madame Bovary","Gustave Flaubert"
+nome,autor,img
+"É assim que acaba","Colleen Hoover",https://m.media-amazon.com/images/I/9112cWOV-OL._SY385_.jpg
+"É assim que começa","Colleen Hoover",https://m.media-amazon.com/images/I/813TDwBsihL._SY385_.jpg
+"A Hipótese do Amor","Ali Hazelwood",https://m.media-amazon.com/images/I/41knBs4ouOL._SY445_SX342_.jpg
+"Uma Breve História do Tempo","Stephen Hawking",https://m.media-amazon.com/images/I/51aG2+outOL._SY445_SX342_.jpg
+"O Universo Numa Casca de Noz","Stephen Hawking",https://m.media-amazon.com/images/I/51wYh204mfL._SY445_SX342_.jpg
+"O Universo Elegante","Brian Greene",https://m.media-amazon.com/images/I/61r1T8rcXAL._SY385_.jpg
+"Breves Respostas para Grandes Questões","Stephen Hawking",https://m.media-amazon.com/images/I/51uywlQG4UL._SY445_SX342_.jpg
+"O Homem de Giz","C. J. Tudor",https://m.media-amazon.com/images/I/41LuOehnKtL._SY445_SX342_.jpg
+"Manual de Assassinato para Boas Garotas","Holly Jackson",https://m.media-amazon.com/images/I/71fE-JgveUL._SY385_.jpg
+"Anatomia do Mal","Harold Schechter",https://m.media-amazon.com/images/I/71SV55vWSEL._SY385_.jpg
+"Os Sertões","Euclides da Cunha",https://m.media-amazon.com/images/I/61wNPOSBNsL._SY385_.jpg
+"O Gato Malhado e a Andorinha Sinhá","Jorge Amado",https://m.media-amazon.com/images/I/51TFb7yExqS._SY445_SX342_.jpg
+"O Jardim das Borboletas","Dot Hutchison",https://m.media-amazon.com/images/I/A142ngVX2rL._SY385_.jpg
+"Capitães da Areia","Jorge Amado",https://m.media-amazon.com/images/I/41egZIo3eYL._SY445_SX342_.jpg
+"O Príncipe Cruel","Holly Black",https://m.media-amazon.com/images/I/81FH6q0EqYS._SY385_.jpg
+"O Senhor dos Anéis- A Sociedade do Anel","J.R.R. Tolkien",https://m.media-amazon.com/images/I/81MZ8OjmQrL._SY425_.jpg
+Drácula,"Bram Stoker",https://m.media-amazon.com/images/I/71eyN+ZYvCL._SY385_.jpg
+"O Pequeno Príncipe","Antoine de Saint-Exupéry",https://m.media-amazon.com/images/I/71FpfkjJUSL._SY385_.jpg
+"O Menino do Pijama Listrado","John Boyne",https://m.media-amazon.com/images/I/41lCCL6N4nL._SY445_SX342_.jpg
+"Memórias Póstumas de Brás Cubas","Machado de Assis",https://m.media-amazon.com/images/I/61Us+SweQDL._SY385_.jpg
+"Ai Meus Deuses","Tera Lynn Childs",https://m.media-amazon.com/images/I/81hG2dbNMwL._SY385_.jpg
+"50 Ideias de Física Quântica que Você Precisa Conhecer","Joanne Baker",https://m.media-amazon.com/images/I/31k6fPZOtyL._SY445_SX342_.jpg
+"50 Tons de Cinza","E. L. James",https://m.media-amazon.com/images/I/51XHQHnyciL._SY445_SX342_.jpg
+"Moby Dick","Herman Melville",https://m.media-amazon.com/images/I/51cQOAZhjgL._SY445_SX342_.jpg
+"Não Conte a Ninguém","Harlan Coben",https://m.media-amazon.com/images/I/51KmwUlCluL._SY445_SX342_.jpg
+"Harry Potter e a Pedra Filosofal","J.K. Rowling",https://m.media-amazon.com/images/I/41897yAI4LL._SY445_SX342_.jpg
+"As Crônicas de Nárnia","C.S. Lewis",https://m.media-amazon.com/images/I/51+2QAB7I+L._SY445_SX342_.jpg
+"Percy Jackson e Os Olimpianos- ladrão de raios","Rick Riordan",https://m.media-amazon.com/images/I/61lPJcX3j1L._SY385_.jpg
+"Morro dos Ventos Uivantes","Emily Brontë",https://m.media-amazon.com/images/I/71lqmkoeosL._SY385_.jpg
+"Orgulho e Preconceito","Jane Austen",https://m.media-amazon.com/images/I/717jpDhXioL._SY385_.jpg
+"Razão e Sensibilidade","Jane Austen",https://m.media-amazon.com/images/I/81eN74IRg4L._SY385_.jpg
+1984,"George Orwell",https://m.media-amazon.com/images/I/51feD87yuEL._SY445_SX342_.jpg
+Macunaíma,"Mário de Andrade",https://cdn.maioresemelhores.com/imagens/01-maiores-e-melhores-macunaima-cke.jpg
+"Grande Sertão Veredas","João Guimarães Rosa",https://cdn.maioresemelhores.com/imagens/02-maiores-e-melhores-grande-sertao-cke.jpg
+"Dom Casmurro","Machado de Assis",https://cdn.maioresemelhores.com/imagens/06-maiores-e-melhores-dom-casmurro-cke.jpg
+"O Cortiço","Aluísio Azevedo",https://cdn.maioresemelhores.com/imagens/07-maiores-e-melhores-o-cortico-cke.jpg
+"Gabriela Cravo e Canela","Jorge Amado",https://cdn.maioresemelhores.com/imagens/09-maiores-e-melhores-gabriela-cravo-e-canela-cke.jpg
+"Vidas Secas","Graciliano Ramos",https://cdn.maioresemelhores.com/imagens/11-maiores-e-melhores-vidas-secas-cke.jpg
+"A Moreninha","Joaquim Manuel de Macedo",https://cdn.maioresemelhores.com/imagens/13-maiores-e-melhores-a-moreninha-cke.jpg
+Iracema,"José de Alencar",https://cdn.maioresemelhores.com/imagens/14-maiores-e-melhores-iracema-cke.jpg
+"O Ateneu","Raul Pompeia",https://cdn.maioresemelhores.com/imagens/16-maiores-e-melhores-o-ateneu-cke.jpg
+"A Escrava Isaura","Bernardo Guimarães",https://images-ext-1.discordapp.net/https/cdn.maioresemelhores.com/imagens/18-maiores-e-melhores-a-escrava-isauda-cke.jpg?format=webp&width=274&height=458
+"O Guarani","José de Alencar",https://cdn.maioresemelhores.com/imagens/20-maiores-e-melhores-o-guarani-cke.jpg
+"A divina Comédia","Dante Alighieri",https://m.media-amazon.com/images/I/51SLwaM1-XL._SY445_SX342_.jpg
+"Dom Quixote","Miguel de Cervantes",https://m.media-amazon.com/images/I/81k74t+lqyL._SY385_.jpg
+Frankenstein,"Mary Shelley",https://m.media-amazon.com/images/I/810eLEben8L._SY385_.jpg
+"Os Três Mosqueteiros","Alexandre Dumas",https://m.media-amazon.com/images/I/817bVkQAWhL._SY385_.jpg
+"Os Miseráveis","Victor Hugo",https://m.media-amazon.com/images/I/51UvQ7XBImL._SY445_SX342_.jpg
+"O Corvo","Edgar Allan Poe",https://m.media-amazon.com/images/I/515xkV5l3XL._SY445_SX342_.jpg
+"Madame Bovary","Gustave Flaubert",https://m.media-amazon.com/images/I/41uoHb7H5vL._SY445_SX342_.jpg

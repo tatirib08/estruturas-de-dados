@@ -27,7 +27,7 @@ class Livros():
             dr = csv.DictReader(file)
 
             for linha in dr:
-                self.catalogo[id]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': random.randint(1,50)}
+                self.catalogo[id]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': random.randint(1,50), 'img': linha['img']}
                 id+=1 
 
     def addLivro(self):
