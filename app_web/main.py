@@ -11,9 +11,10 @@ def principal():
     return render_template('index.html')
 
 @app.route('/Catalogo')
-def sobre1():
+def catalogo():
 
     return render_template('catalogo.html')
+
 
 @app.route('/getcatalogo', methods=['GET'])
 def get_catalogo():
@@ -28,5 +29,7 @@ def removerLivro(livro_id):
 def baixarCatalogo():
     zipfile.ZipFile('temp/catalogo.zip', mode='w').write("catalogo.json")
     return send_from_directory('temp', 'catalogo.zip', as_attachment=True)
+
+
 
 app.run(debug = True)

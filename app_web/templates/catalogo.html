@@ -64,7 +64,7 @@
         <a class="nav-link" href="#">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url_for('sobre1')}}">Catálogo</a>
+        <a class="nav-link" href="{{url_for('catalogo')}}">Catálogo</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -74,18 +74,27 @@
   </div>
 </nav>
 
-{% for produto in catalogo%}
+<!-- {% for produto in catalogo%}
 <tr>
      <td>{{produto.nome}}</td>
      <td>{{produto.quantidade}}</td>
 </tr>
-{%endfor%}          
+{%endfor%}           -->
 
 
 <div class="container">  
-  {% for i in range(10)%}  
-
-  {%endfor%} 
+  <!-- {% for i in range(10)%}   -->
+  <div class="col-sm-4">
+    <div class="panel panel-primary">
+      <div class="panel-heading">BLACK FRIDAY DEAL</div>
+      <div class="panel-body"><img id="capaLivro" src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+      <!-- <script>
+        document.getElementById("capaLivro").src = "https://m.media-amazon.com/images/I/51i7kH+rh9L._SY445_SX342_.jpg";
+      </script> -->
+      <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+    </div>
+    </div> 
+  <!-- {%endfor%}  -->
 </div>
 
 <!-- 

@@ -1,8 +1,7 @@
-
 getCatalogo().then(response => {console.log(response)})
-baixarCatalogo().then()
+// baixarCatalogo().then()
 // removerlivro().then(data => {})
-
+mostrarCatalogo().then(response =>{console.log(response)})
 async function getCatalogo()
 {
     let response = await fetch('http://127.0.0.1:5000/getcatalogo')
@@ -11,11 +10,15 @@ async function getCatalogo()
     return data
 }
 
-function mostrarCatalogo()
+async function mostrarCatalogo()
 {
     //limpar div dos catalogos
-    
+    // let response = await fetch('http://127.0.0.1:5000/mostrarCatalogo')
+    // let data = await response.json()
+    getCatalogo()
     //criar novos items referentes ao dicionario e dar append na div dos catalogos
+    document.getElementById("capaLivro").src = "https://m.media-amazon.com/images/I/51i7kH+rh9L._SY445_SX342_.jpg";
+    return data
 }
 
 {/* <div class="col-sm-4">
@@ -26,6 +29,12 @@ function mostrarCatalogo()
 </div>
 </div> */}
 
+// const element = document.getElementById
+
+function addLivro()
+{
+
+}
 
 async function removerlivro(nome)
 {
@@ -47,45 +56,45 @@ function buscarLivro(dicionario, nomeDoLivro)
     });
 }
 
-async function baixarCatalogo()
-{
-    /*
-        Faz o fetch da requisição
-    */
-    let response = await fetch(`http://127.0.0.1:5000/download`, { method: 'GET' }) 
+// async function baixarCatalogo()
+// {
+//     /*
+//         Faz o fetch da requisição
+//     */
+//     let response = await fetch(`http://127.0.0.1:5000/download`, { method: 'GET' }) 
 
-    /*
-        Transforma a resposta em um binário, já que representa um arquivo
-    */
-    const fileContents = await response.blob();
+//     /*
+//         Transforma a resposta em um binário, já que representa um arquivo
+//     */
+//     const fileContents = await response.blob();
 
-    /*
-        Tag de link no html tem um atributo 'download', que baixa o arquivo no link referido.
-        Cria um link e deixa invisivel.
-    */
-    const a = document.createElement("a");
-    a.style.display = 'none'
+//     /*
+//         Tag de link no html tem um atributo 'download', que baixa o arquivo no link referido.
+//         Cria um link e deixa invisivel.
+//     */
+//     const a = document.createElement("a");
+//     a.style.display = 'none'
 
-    /*
-        Gera um link com o binario e indica na tag de link
-    */
-    const url = URL.createObjectURL(fileContents);
-    a.href = url;
+//     /*
+//         Gera um link com o binario e indica na tag de link
+//     */
+//     const url = URL.createObjectURL(fileContents);
+//     a.href = url;
 
-    /*
-        Indica o nome do arquivo que vai fazer o download
-    */ 
-    a.download = "catalogo.zip";
+//     /*
+//         Indica o nome do arquivo que vai fazer o download
+//     */ 
+//     a.download = "catalogo.zip";
 
-    /*
-        Clica no link
-    */
-    a.click();
+//     /*
+//         Clica no link
+//     */
+//     a.click();
 
-    /*
-        Deleta o link temporario
-    */
-    URL.revokeObjectURL(url);
+//     /*
+//         Deleta o link temporario
+//     */
+//     URL.revokeObjectURL(url);
 
-    alert("Catálogo baixado com sucesso!"); 
-}
+//     alert("Catálogo baixado com sucesso!"); 
+// }
