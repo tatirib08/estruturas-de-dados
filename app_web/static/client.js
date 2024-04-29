@@ -75,7 +75,7 @@ async function baixarCatalogo()
     /*
         Indica o nome do arquivo que vai fazer o download
     */ 
-    a.download = "catalogo.json";
+    a.download = "catalogo.zip";
 
     /*
         Clica no link

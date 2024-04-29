@@ -1,5 +1,7 @@
 from flask import Flask, url_for, render_template, jsonify, send_from_directory
 from arquivo import Livros
+import zipfile
+
 app = Flask(__name__)
 
 livros = Livros()
@@ -24,6 +26,7 @@ def removerLivro(livro_id):
 
 @app.route('/download', methods=['GET'])
 def baixarCatalogo():
-    return send_from_directory('temp', 'catalogo.json', as_attachment=True)
+    zipfile.ZipFile('temp/catalogo.zip', mode='w').write("catalogo.json")
+    return send_from_directory('temp', 'catalogo.zip', as_attachment=True)
 
 app.run(debug = True)
