@@ -33,9 +33,9 @@ def addEstoque(livro_id):
 @app.route('/subEstoque/<int:livro_id>', methods=['GET'])
 def subEstoque(livro_id):
 
-    if(livros.catalogo[livro_id]['quantidade'] > 0):
+    if(int(livros.catalogo[livro_id]['quantidade']) > 0):
         livros.catalogo[livro_id]['quantidade'] -= 1
-        
+
     return render_template('catalogo.html')
 
 
@@ -51,7 +51,7 @@ def addLivro():
 @app.route('/novoLivro', methods=['POST'])
 def novoLivro():
     print(request.form)
-    livro = {'nome': request.form['fnome'], 'autor': request.form['fautor'] , 'quantidade': request.form['festoque'] , 'img': request.form['furl']}
+    livro = {'nome': request.form['fnome'], 'autor': request.form['fautor'] , 'quantidade': int(request.form['festoque']) , 'img': request.form['furl']}
     id = len(livros.catalogo)
     livros.addLivro(id, livro)
     # return jsonify(livros.catalogo), 201
