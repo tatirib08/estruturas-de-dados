@@ -1,12 +1,47 @@
 
 getCatalogo().then(response => {mostrarCatalogo(response)})
 
+inputBusca = botaoBusca = document.getElementById("fsearch")
+botaoBusca = document.getElementById("fsearchbtn")
+
+botaoBusca.addEventListener('click', () => {
+    catalogo = getCatalogo().then(
+        catalogo =>
+        {
+            if(verificarBusca())
+            {
+                let escolhido = {}
+                        
+                Object.entries(catalogo).forEach(([key, value]) => {
+                    if(value['nome'] == inputBusca.value)
+                    {
+                        escolhido[key] = value;
+                    }
+                })
+                mostrarCatalogo(escolhido).then(data => {});
+        
+            }
+            else
+            {
+                mostrarCatalogo(catalogo).then(data => {});
+            }
+        }
+    )
+})
+
 async function getCatalogo()
 {
     let response = await fetch('http://127.0.0.1:5000/getcatalogo')
     let data = await response.json()
    
     return data
+}
+
+function verificarBusca()
+{
+    let fsearch = document.getElementById("fsearch");
+    let regex = /^ *$/;
+    return !regex.test(fsearch.value)
 }
 
 async function mostrarCatalogo(dicionario)
@@ -17,6 +52,9 @@ async function mostrarCatalogo(dicionario)
     let estoqueLivro; 
 
     let catalogo = document.getElementById("catalogo");
+
+    catalogo.innerHTML = ""
+
     Object.entries(dicionario).forEach(([key, value]) => {
     
         /* pega os dados do json */
