@@ -43,6 +43,18 @@
       font-size: 2.5rem;
     }
 
+    .subtitle{
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .menu{
+      /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+      font-size: 1rem;
+      /* font-weight:normal; */
+    }
+
   </style>
 </head>
 
@@ -58,11 +70,17 @@
     </button>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="{{url_for('principal')}}">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item ">
+          <a class="menu nav-link" href="{{url_for('principal')}}">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url_for('catalogo')}}">Catálogo</a>
+          <a class="menu nav-link" href="{{url_for('catalogo')}}">Catálogo</a>
+        </li>
+        <li>
+          <a class="menu nav-link" href="{{url_for('baixarCatalogo')}}" >Baixar catálogo </a>
+        </li>
+        <li>
+          <a class="menu nav-link" href="{{url_for('addLivro')}}"  >Adicionar livro</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
@@ -77,10 +95,10 @@
     <div class="row mt-5">
       <div class="container-fluid d-flex flex-column justify-content-center col-8">
         <div class="container-fluid d-flex justify-content-center" id="titulo">
-          <h1 class="display-1">BÜCHER</h1> 
+          <h1>BÜCHER</h1> 
         </div>
         <div class="container-fluid rectangle w-100 p-5 flex-fill">
-          <p class="h3 text-center">Descubra o mundo dentro de cada página. Bem-vindo à Bücher.</p>
+          <p class="subtitle text-center">Descubra o mundo dentro de cada página. Bem-vindo à Bücher.</p>
         </div>
       </div>
       <div class="col-4">
@@ -89,5 +107,5 @@
     </div>
   </div>
 </body>
-
+<script> src="{{url_for('static', filename='client.js')}}" </script>
 </html>

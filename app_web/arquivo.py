@@ -30,16 +30,8 @@ class Livros():
                 self.catalogo[id]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': random.randint(1,50), 'img': linha['img']}
                 id+=1 
 
-    def addLivro(self):
-        print("Nome do livro: ")
-        livro = input()
-        print("Autor:")
-        autor = input()
-        print("Quantidade no estoque:")
-        estoque = input()
-
-        # add
-        self.catalogo[livro] = {'autor': autor, 'quantidade': estoque}
+    def addLivro(self, id, novoLivro):
+        self.catalogo[id] = novoLivro
         self.salvarArquivo()
 
     def salvarArquivo(self):
