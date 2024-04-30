@@ -70,7 +70,5 @@ async function mostrarCatalogo(dicionario)
         painelEstoque.innerHTML = "Estoque: " + estoqueLivro;
         quadradoGrande.appendChild(painelEstoque);
 
-
-        // console.log(value)
     });
 }
