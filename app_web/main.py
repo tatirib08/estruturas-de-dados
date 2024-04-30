@@ -24,6 +24,21 @@ def removerLivro(livro_id):
     del livros.catalogo[livro_id]
     return jsonify(livros.catalogo), 201
 
+@app.route('/addEstoque/<int:livro_id>', methods=['GET'])
+def addEstoque(livro_id):
+
+    livros.catalogo[livro_id]['quantidade'] += 1
+    return render_template('catalogo.html')
+
+@app.route('/subEstoque/<int:livro_id>', methods=['GET'])
+def subEstoque(livro_id):
+
+    if(livros.catalogo[livro_id]['quantidade'] > 0):
+        livros.catalogo[livro_id]['quantidade'] -= 1
+        
+    return render_template('catalogo.html')
+
+
 @app.route('/download', methods=['GET'])
 def baixarCatalogo():
     zipfile.ZipFile('temp/catalogo.zip', mode='w').write("catalogo.json")

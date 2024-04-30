@@ -16,23 +16,6 @@ async function mostrarCatalogo(dicionario)
     let autorLivro;
     let estoqueLivro; 
 
-    // criar novos items referentes ao dicionario e dar append na div dos catalogos
-    // document.getElementById("capaLivro").src = "https://m.media-amazon.com/images/I/51i7kH+rh9L._SY445_SX342_.jpg";
-
-    /*
-
-        <div class="container col-sm-4 rectangle p-2">  
-            <p class="h5 text-center">É assim que acaba</p>
-            <div class="container-fluid d-flex justify-content-center mb-3">
-                <img src="https://m.media-amazon.com/images/I/9112cWOV-OL._SY385_.jpg"></img>
-            </div>
-            <p class="h6 text-center">Autor: <span class="h6">Colleen Hoover</span></p>
-            <p class="h6 text-center">Estoque: <span class="h6">5</span></p>
-        </div>
-
-    */
-
-
     let catalogo = document.getElementById("catalogo");
     Object.entries(dicionario).forEach(([key, value]) => {
     
@@ -42,8 +25,9 @@ async function mostrarCatalogo(dicionario)
         estoqueLivro = value['quantidade'];
         urlLivro = value['img'];
 
+
         let quadradoGrande = document.createElement("div");
-        quadradoGrande.className += "container col-sm-3 rectangle p-2"
+        quadradoGrande.className += " fonte container col-sm-3 rectangle p-2"
         catalogo.appendChild(quadradoGrande);
 
         let painelNome = document.createElement("p");
@@ -69,6 +53,26 @@ async function mostrarCatalogo(dicionario)
         painelEstoque.className += "quantidadeLivro h6 text-center align-self-end";
         painelEstoque.innerHTML = "Estoque: " + estoqueLivro;
         quadradoGrande.appendChild(painelEstoque);
+
+        let formAdd = document.createElement("form");
+        formAdd.action = `http://127.0.0.1:5000/addEstoque/${key}`
+        
+        let inputAdd = document.createElement("input");
+        inputAdd.className += "fonte btn-sm mr-2"
+        inputAdd.value = "+"; 
+        inputAdd.type = "submit";
+        formAdd.appendChild(inputAdd); 
+        quadradoGrande.appendChild(formAdd);
+
+
+        let formSub = document.createElement("form");
+        formSub.action = `http://127.0.0.1:5000/subEstoque/${key}`
+        let inputSub = document.createElement("input");
+        inputSub.className += "fonte btn-sm mr-2"
+        inputSub.value = "-"; 
+        inputSub.type = "submit";
+        formSub.appendChild(inputSub); 
+        quadradoGrande.appendChild(formSub);
 
     });
 }
