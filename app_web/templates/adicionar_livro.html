@@ -50,6 +50,10 @@
       /* font-weight:normal; */
     }
 
+    .fonte{
+      font-family:Verdana, Geneva, Tahoma, sans-serif !important;
+    }
+
   </style>
 </head>
 
@@ -86,48 +90,48 @@
     <div class="row mt-5">
       <div class="container-fluid d-flex flex-column justify-content-center col-8">
 
-        <div class="container-fluid rectangle w-100 p-5 flex-fill">
+        <div class="fonte container-fluid rectangle w-100 p-5 flex-fill">
           <p id="" class="h3 text-center">Informe os dados do livro que deseja adicionar</p>
           <form name="myForm"  action="http://127.0.0.1:5000/novoLivro" onsubmit="return addLivro()" method="post">
             <div class="row mb-3">
-              <div class="col-md-3">
+              <div class="fonte col-md-4">
                 Nome:
               </div>
-              <div class="col-md-9">
+              <div class="fonte col-md-8">
                 <input type="text" name="fnome" id="fnome">
               </div>
             </div>
 
-            <div class="row mb-3">
-              <div class="col-md-3">
-                Autor :
+            <div class="fonte row mb-3">
+              <div class="fonte col-md-4">
+                Autor:
               </div>
-              <div class="col-md-9">
+              <div class="fonte col-md-8">
                 <input type="text" name="fautor" id="fautor">
               </div>
             </div>
 
-            <div class="row mb-3">
-              <div class="col-md-3">
-                Estoque :
+            <div class="fonte row mb-3">
+              <div class="fonte col-md-4">
+                Estoque:
               </div>
-              <div class="col-md-9">
+              <div class="fonte col-md-8">
                 <input type="text" name="festoque" id="festoque">
               </div>
             </div>
 
-            <div class="row mb-3">
-              <div class="col-md-3">
-                Imagem(url) :
+            <div class="fonte row mb-3">
+              <div class="fonte col-md-4">
+                Imagem(url):
               </div>
-              <div class="col-md-9">
+              <div class="fonte col-md-8">
                 <input type="text" name="furl" id="furl">
               </div>
             </div>
 
-            <div class="row mb-3">
-              <div class="col-md-12 d-flex justify-content-center ">
-                <input class="btn-secundary" type="submit" value="Submit">
+            <div class="fonte row mb-3">
+              <div class="fonte col-md-12 d-flex justify-content-center ">
+                <input class="btn-secundary" type="submit" value="Salvar">
               </div>
             </div>
 
