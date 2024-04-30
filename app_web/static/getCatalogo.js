@@ -1,12 +1,47 @@
 
 getCatalogo().then(response => {mostrarCatalogo(response)})
 
+inputBusca = botaoBusca = document.getElementById("fsearch")
+botaoBusca = document.getElementById("fsearchbtn")
+
+botaoBusca.addEventListener('click', () => {
+    catalogo = getCatalogo().then(
+        catalogo =>
+        {
+            if(verificarBusca())
+            {
+                let escolhido = {}
+                        
+                Object.entries(catalogo).forEach(([key, value]) => {
+                    if(value['nome'] == inputBusca.value)
+                    {
+                        escolhido[key] = value;
+                    }
+                })
+                mostrarCatalogo(escolhido).then(data => {});
+        
+            }
+            else
+            {
+                mostrarCatalogo(catalogo).then(data => {});
+            }
+        }
+    )
+})
+
 async function getCatalogo()
 {
     let response = await fetch('http://127.0.0.1:5000/getcatalogo')
     let data = await response.json()
    
     return data
+}
+
+function verificarBusca()
+{
+    let fsearch = document.getElementById("fsearch");
+    let regex = /^ *$/;
+    return !regex.test(fsearch.value)
 }
 
 async function mostrarCatalogo(dicionario)
@@ -16,24 +51,10 @@ async function mostrarCatalogo(dicionario)
     let autorLivro;
     let estoqueLivro; 
 
-    // criar novos items referentes ao dicionario e dar append na div dos catalogos
-    // document.getElementById("capaLivro").src = "https://m.media-amazon.com/images/I/51i7kH+rh9L._SY445_SX342_.jpg";
-
-    /*
-
-        <div class="container col-sm-4 rectangle p-2">  
-            <p class="h5 text-center">É assim que acaba</p>
-            <div class="container-fluid d-flex justify-content-center mb-3">
-                <img src="https://m.media-amazon.com/images/I/9112cWOV-OL._SY385_.jpg"></img>
-            </div>
-            <p class="h6 text-center">Autor: <span class="h6">Colleen Hoover</span></p>
-            <p class="h6 text-center">Estoque: <span class="h6">5</span></p>
-        </div>
-
-    */
-
-
     let catalogo = document.getElementById("catalogo");
+
+    catalogo.innerHTML = ""
+
     Object.entries(dicionario).forEach(([key, value]) => {
     
         /* pega os dados do json */
