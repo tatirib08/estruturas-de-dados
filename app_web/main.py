@@ -28,6 +28,7 @@ def removerLivro(livro_id):
 def addEstoque(livro_id):
 
     livros.catalogo[livro_id]['quantidade'] += 1
+    livros.salvarArquivo()
     return render_template('catalogo.html')
 
 @app.route('/subEstoque/<int:livro_id>', methods=['GET'])
@@ -35,6 +36,7 @@ def subEstoque(livro_id):
 
     if(int(livros.catalogo[livro_id]['quantidade']) > 0):
         livros.catalogo[livro_id]['quantidade'] -= 1
+        livros.salvarArquivo()
 
     return render_template('catalogo.html')
 
