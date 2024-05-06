@@ -37,7 +37,8 @@ def subEstoque(livro_id):
     if(int(livros.catalogo[livro_id]['quantidade']) > 0):
         livros.catalogo[livro_id]['quantidade'] -= 1
         livros.salvarArquivo()
-
+    else:
+        del livros.catalogo[livro_id]
     return render_template('catalogo.html')
 
 
