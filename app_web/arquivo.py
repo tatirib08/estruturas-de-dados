@@ -34,9 +34,8 @@ class Livros():
             dr = json.load(file)
         
             for dicionario in dr.items():
-                print(dicionario)
                 (id, linha) = dicionario
-                self.catalogo[id]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': random.randint(1,50), 'img': linha['img']}
+                self.catalogo[int(id)]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': linha["quantidade"], 'img': linha['img']}
                 
 
     def addLivro(self, id, novoLivro):
