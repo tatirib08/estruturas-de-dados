@@ -11,24 +11,33 @@ class Livros():
 
     def __init__(self):
 
-        # lendo o dataframe do csv 
-        self.caminho = "livros.csv"
-        self.df = pd.read_csv(self.caminho)
-        # self.dados = pd.DataFrame(self.df)
-        self.dados = {}
+        self.csv = "livros.csv"
+        self.json = "catalogo.json"
+
         self.catalogo = dict()
 
-        self.criarDic()
-        self.salvarArquivo()
+        # self.criarDic()
+        # self.salvarArquivo()
+        self.lerJson()
 
     def criarDic(self):
-        with open(self.caminho) as file:
+        with open(self.csv) as file:
             id = 0
             dr = csv.DictReader(file)
 
             for linha in dr:
                 self.catalogo[id]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': random.randint(1,50), 'img': linha['img']}
                 id+=1 
+
+    def lerJson(self):
+        with open(self.json) as file:
+            dr = json.load(file)
+        
+            for dicionario in dr.items():
+                print(dicionario)
+                (id, linha) = dicionario
+                self.catalogo[id]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': random.randint(1,50), 'img': linha['img']}
+                
 
     def addLivro(self, id, novoLivro):
         self.catalogo[id] = novoLivro

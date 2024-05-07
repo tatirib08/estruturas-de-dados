@@ -19,10 +19,11 @@ def catalogo():
 def get_catalogo():
     return jsonify(livros.catalogo), 201
 
-@app.route('/removerlivro/<int:livro_id>', methods=['DELETE'])
+@app.route('/removerlivro/<int:livro_id>', methods=['GET'])
 def removerLivro(livro_id):
     del livros.catalogo[livro_id]
-    return jsonify(livros.catalogo), 201
+    livros.salvarArquivo()
+    return render_template('catalogo.html')
 
 @app.route('/addEstoque/<int:livro_id>', methods=['GET'])
 def addEstoque(livro_id):

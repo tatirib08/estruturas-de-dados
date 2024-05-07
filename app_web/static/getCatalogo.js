@@ -94,26 +94,38 @@ async function mostrarCatalogo(dicionario)
             painelEstoque.innerHTML = "Estoque: " + estoqueLivro;
             quadradoGrande.appendChild(painelEstoque);
     
+            let divBotoes = document.createElement("div");
+            divBotoes.className += "d-flex flex-row align-content-center justify-content-around"
+            quadradoGrande.appendChild(divBotoes);
+
             let formAdd = document.createElement("form");
             formAdd.action = `http://127.0.0.1:5000/addEstoque/${key}`
             
             let inputAdd = document.createElement("input");
-            inputAdd.className += "fonte btn-sm mr-2"
+            inputAdd.className += "fonte btn-sm "
             inputAdd.value = "+"; 
             inputAdd.type = "submit";
             formAdd.appendChild(inputAdd); 
-            quadradoGrande.appendChild(formAdd);
+            divBotoes.appendChild(formAdd);
     
     
             let formSub = document.createElement("form");
             formSub.action = `http://127.0.0.1:5000/subEstoque/${key}`
             let inputSub = document.createElement("input");
-            inputSub.className += "fonte btn-sm mr-2"
-            inputSub.value = "-"; 
+            inputSub.className += "fonte btn-sm  "
+            inputSub.value = "  -  "; 
             inputSub.type = "submit";
             formSub.appendChild(inputSub); 
-            quadradoGrande.appendChild(formSub);
-    
+            divBotoes.appendChild(formSub);
+
+            let formDel = document.createElement("form");
+            formDel.action = `http://127.0.0.1:5000/removerlivro/${key}`
+            let inputDel = document.createElement("input");
+            inputDel.className += "fonte btn-sm "
+            inputDel.value = "X"; 
+            inputDel.type = "submit";
+            formDel.appendChild(inputDel); 
+            divBotoes.appendChild(formDel);
         });
 
     }
