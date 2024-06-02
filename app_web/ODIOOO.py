@@ -41,12 +41,12 @@ class Arvore():
                 self.catalogo[int(id)]={'id': int(id), 'nome': linha["nome"],'autor': linha["autor"], 'quantidade': linha["quantidade"], 'img': linha['img']}
                 
         # print(self.catalogo)
-
-        Ap, chave =  self.buildTree(self.catalogo, self.Apontador, self.Chave)
+        # Ap, chave = _InserirElementos(Ap, ordem, dataframe, chave)
+        Ap, chave =  self.buildTree(self.catalogo, self.Apontador,self.Order, self.Chave)
 
         self.printTree(Ap)
         
-    def buildTree(self, dicionario, Ap, chave):
+    def buildTree(self, dicionario, Ap, ordem, chave):
         # pass 
         tamanho = len(dicionario)
         # print(tamanho) # tam = 50 ok
@@ -58,83 +58,18 @@ class Arvore():
             register.elemento = dicionario[i]["id"]
             # print(register.chave, " : ", register.elemento)
             
-            Ap = self.insertRegister(register, self.Order, Ap)
+            # Ap = self.insertRegister(register, self.Order, Ap)
+            Ap = self._Insere(register, Ap, ordem)
             
             chave+=1
 
         return Ap, chave
 
-    def insertRegister(self, register, order, Ap): 
-        cresceu = False
-        RegRetorno = Registro()
-        ApRetorno = PaginaNode(self.Order)
-        
-        cresceu, RegRetorno, ApRetorno = self.searchPosition(register, Ap, cresceu, RegRetorno, ApRetorno, order)
-        
-        if (cresceu):
-            ApTemp = PaginaNode(self.Order)
-            ApTemp.n = 1
-            ApTemp.registro[0] = RegRetorno
-            ApTemp.apontador[1] = ApRetorno
-            ApTemp.apontador[0] = Ap
-            Ap = ApTemp
-            
-        return Ap
-        
-      
-    def searchPosition(self, Reg, Ap, Cresceu, RegRetorno, ApRetorno, Ordem):
-        i = 1
-        J = None
-        
-        if (Ap == None):
-            Cresceu = True
-            RegRetorno = Reg
-            ApRetorno = None
-            return Cresceu, RegRetorno, ApRetorno
-        
-        while ( i < Ap.n and Reg.chave > Ap.registro[i - 1].chave ):
-            i+= 1
-
-        if(Reg.chave == Ap.registro[i - 1].chave):
-            print(" Erro: Registro já está presente\n")
-            Cresceu = False
-            return Cresceu, RegRetorno, ApRetorno
-
-        if(Reg.chave < Ap.r[i - 1].chave ):
-            i-= 1
-
-        Cresceu, RegRetorno, ApRetorno = self.searchPosition(Reg, Ap.apontador[i], Cresceu, RegRetorno, ApRetorno, Ordem)
-
-        if(not Cresceu):
-            return Cresceu, RegRetorno, ApRetorno
-        if (Ap.n < Ordem): # Página tem espaco
-            self.insertInNode(Ap, RegRetorno, ApRetorno)
-            Cresceu = False
-            return Cresceu, RegRetorno, ApRetorno
-        
-        # Overflow: Página tem que ser dividida /
-        ApTemp = PaginaNode(Ordem)
-        ApTemp.n = 0
-        ApTemp.apontador[0] = None
-        if (i < (Ordem//2) + 1):
-            self.insertInNode(ApTemp, Ap.r[Ordem - 1], Ap.apontador[Ordem])
-            Ap.n-= 1
-            self.insertInNode(Ap, RegRetorno, ApRetorno)
-        else:
-            self.insertInNode(ApTemp, RegRetorno, ApRetorno)
-        for J in range((Ordem//2) + 2, Ordem + 1):
-            self.insertInNode(ApTemp, Ap.r[J - 1], Ap.p[J])
-        Ap.n = (Ordem//2)
-        ApTemp.apontador[0] = Ap.apontador[(Ordem//2) + 1]
-        RegRetorno = Ap.registro[(Ordem//2)]
-        ApRetorno = ApTemp
-        return Cresceu, RegRetorno, ApRetorno
-
-    def insertInNode(self, Ap, Reg, ApDir):
+    def _InsereNaPagina(self,Ap, Reg, ApDir):
         k = Ap.n
         NaoAchouPosicao = (k > 0)
         while (NaoAchouPosicao):
-            if ( Reg.chave >= Ap.r[k - 1].chave):
+            if ( Reg.chave >= Ap.r[k - 1].chave ):
                 NaoAchouPosicao = False
                 break
             Ap.registro[k] = Ap.registro[k - 1]
@@ -142,10 +77,84 @@ class Arvore():
             k-= 1
             if (k < 1):
                 NaoAchouPosicao = False
-        
+
         Ap.registro[k] = Reg
         Ap.apontador[k + 1] = ApDir
         Ap.n += 1
+
+
+    def _Ins(self, Reg, Ap, Cresceu, RegRetorno, ApRetorno, Ordem ):
+        i = 1
+        J = None
+        if (Ap == None):
+            Cresceu = True
+            RegRetorno = Reg
+            ApRetorno = None
+            return Cresceu, RegRetorno, ApRetorno
+
+        while ( i < Ap.n and Reg.chave > Ap.r[i - 1].chave ):
+            i+= 1
+
+        if(Reg.chave == Ap.registro[i - 1].chave):
+            print(" Erro: Registro já está presente\n")
+            Cresceu = False
+            return Cresceu, RegRetorno, ApRetorno
+
+        if(Reg.chave < Ap.r[i - 1].chave):
+            i-= 1
+
+        Cresceu, RegRetorno, ApRetorno = self._Ins(Reg, Ap.apontador[i], Cresceu, RegRetorno, ApRetorno, Ordem)
+
+        if(not Cresceu):
+            return Cresceu, RegRetorno, ApRetorno
+        if (Ap.n < Ordem): # Página tem espaco
+            self._InsereNaPagina(Ap, RegRetorno, ApRetorno)
+            Cresceu = False
+            return Cresceu, RegRetorno, ApRetorno
+        
+        # Overflow: Página tem que ser dividida /
+        ApTemp = PaginaNode(Ordem)
+        ApTemp.n = 0
+        ApTemp.apontador[0] = None
+
+        if (i < (Ordem//2) + 1):
+            self._InsereNaPagina(ApTemp, Ap.registro[Ordem - 1], Ap.apontador[Ordem])
+            Ap.n-= 1
+            self._InsereNaPagina(Ap, RegRetorno, ApRetorno)
+        else:
+            self._InsereNaPagina(ApTemp, RegRetorno, ApRetorno)
+        for J in range((Ordem//2) + 2, Ordem + 1):
+            self._InsereNaPagina(ApTemp, Ap.registro[J - 1], Ap.apontador[J])
+        Ap.n = (Ordem//2)
+        ApTemp.apontador[0] = Ap.apontador[(Ordem//2) + 1]
+        RegRetorno = Ap.registro[(Ordem//2)]
+        ApRetorno = ApTemp
+        return Cresceu, RegRetorno, ApRetorno
+
+
+    def _Insere(self,Reg, Ap, Ordem):
+        Cresceu = False
+        RegRetorno = Registro()
+        ApRetorno = PaginaNode(Ordem)
+        Cresceu, RegRetorno, ApRetorno = self._Ins(Reg, Ap, Cresceu, RegRetorno, ApRetorno, Ordem)
+        if (Cresceu):
+            ApTemp = PaginaNode(Ordem)
+            ApTemp.n = 1
+            ApTemp.registro[0] = RegRetorno
+            ApTemp.apontador[1] = ApRetorno
+            ApTemp.apontador[0] = Ap
+            Ap = ApTemp
+        return Ap
+    
+    # def _InserirElementos(self,Ap, ordem, dataframe, chave):
+    #     tam_lin, tam_col = dataframe.shape
+    #     for i in range(tam_lin):
+    #         reg = Registro()
+    #         reg.Chave = dataframe.iloc[i, 0]
+    #         reg.Elemento = i
+    #         Ap = self._Insere(reg, Ap, ordem)
+    #         chave += 1
+    #     return Ap, chave
 
     def printTree(self, Ap):
 
@@ -153,7 +162,7 @@ class Arvore():
             i = 0
             while i < Ap.n:
                 self.printTree(Ap.apontador[i])
-                print(Ap.registro[i].chave, "-", Ap.r[i].elemento)
+                print(Ap.registro[i].chave, "-", Ap.registro[i].elemento)
                 i += 1
                 self.printTree(Ap.apontador[i])
 
