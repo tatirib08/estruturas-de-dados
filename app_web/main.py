@@ -1,6 +1,9 @@
 from flask import Flask, url_for, render_template, jsonify, send_from_directory, request
 from arquivo import Livros
+from lempel_ziv_welch import LempelZivWelch
 import zipfile
+import json
+
 
 app = Flask(__name__)
 
@@ -46,8 +49,9 @@ def subEstoque(livro_id):
 
 @app.route('/download', methods=['GET'])
 def baixarCatalogo():
-    zipfile.ZipFile('temp/catalogo.zip', mode='w').write("catalogo.json")
-    return send_from_directory('temp', 'catalogo.zip', as_attachment=True)
+    with open("catalogo.json") as file:
+        LempelZivWelch.compress(str(json.load(file)), "temp/catalogo.pkl", True, False)
+        return send_from_directory('temp', 'catalogo.pkl', as_attachment=True)
 
 @app.route('/addLivro')
 def addLivro():
