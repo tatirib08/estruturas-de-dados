@@ -6,7 +6,6 @@ class Registro():
         self.dado: any = dado
 
 
-
 class Pagina():
     def __init__(self, grau_arvore: int, pagina_cima = None) -> None:
         self.tam_max: int = grau_arvore - 1
@@ -64,6 +63,7 @@ class Pagina():
             if(registro!=None):    
                 print(registro.chave,end=';;; ')
         print(f'] - quantidade de filhos -> {len(self.paginas)}')
+        
         
 class ArvoreB():
     def __init__(self, grau: int = 1):
