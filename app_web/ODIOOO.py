@@ -25,7 +25,7 @@ class Arvore():
         
         self.catalogo = dict()
         self.Order= 4 #ordem da árvore 
-        self.Apontador = PaginaNode(self.Order)
+        self.Apontador = None
         self.Chave = 0
 
 
@@ -43,7 +43,7 @@ class Arvore():
         # print(self.catalogo)
         # Ap, chave = _InserirElementos(Ap, ordem, dataframe, chave)
         Ap, chave =  self.buildTree(self.catalogo, self.Apontador,self.Order, self.Chave)
-
+        
         self.printTree(Ap)
         
     def buildTree(self, dicionario, Ap, ordem, chave):

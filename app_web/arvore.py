@@ -24,8 +24,8 @@ class Arvore():
     def __init__(self):
         
         self.catalogo = dict()
-        self.Order= 4 #ordem da árvore 
-        self.Apontador = PaginaNode(self.Order)
+        self.Order= 5 #ordem da árvore 
+        self.Apontador = None
         self.Chave = 0
 
 
@@ -42,9 +42,10 @@ class Arvore():
                 
         # print(self.catalogo)
 
-        Ap, chave =  self.buildTree(self.catalogo, self.Apontador, self.Chave)
-
-        self.printTree(Ap)
+        self.Apontador, chave =  self.buildTree(self.catalogo, self.Apontador, self.Chave)
+        print("\nÁRVORE\n")
+        # self.printTree(self.Apontador)
+        self.imprimir()
         
     def buildTree(self, dicionario, Ap, chave):
         # pass 
@@ -54,8 +55,9 @@ class Arvore():
         ''' Cria os registros a partir do dicionário '''
         for i in range(tamanho):
             register = Registro()
-            register.chave = dicionario[i]["nome"]
-            register.elemento = dicionario[i]["id"]
+            register.chave = int(dicionario[i]["id"])
+            print(int(dicionario[i]["id"]))
+            register.elemento = dicionario[i]["nome"]
             # print(register.chave, " : ", register.elemento)
             
             Ap = self.insertRegister(register, self.Order, Ap)
@@ -94,13 +96,14 @@ class Arvore():
         
         while ( i < Ap.n and Reg.chave > Ap.registro[i - 1].chave ):
             i+= 1
-
+        # print("\nReg: ", Reg.chave)
+        # print("\nAp: ", Ap.registro[i - 1].chave)
         if(Reg.chave == Ap.registro[i - 1].chave):
             print(" Erro: Registro já está presente\n")
             Cresceu = False
             return Cresceu, RegRetorno, ApRetorno
 
-        if(Reg.chave < Ap.r[i - 1].chave ):
+        if(Reg.chave < Ap.registro[i - 1].chave ):
             i-= 1
 
         Cresceu, RegRetorno, ApRetorno = self.searchPosition(Reg, Ap.apontador[i], Cresceu, RegRetorno, ApRetorno, Ordem)
@@ -117,13 +120,13 @@ class Arvore():
         ApTemp.n = 0
         ApTemp.apontador[0] = None
         if (i < (Ordem//2) + 1):
-            self.insertInNode(ApTemp, Ap.r[Ordem - 1], Ap.apontador[Ordem])
+            self.insertInNode(ApTemp, Ap.registro[Ordem - 1], Ap.apontador[Ordem])
             Ap.n-= 1
             self.insertInNode(Ap, RegRetorno, ApRetorno)
         else:
             self.insertInNode(ApTemp, RegRetorno, ApRetorno)
         for J in range((Ordem//2) + 2, Ordem + 1):
-            self.insertInNode(ApTemp, Ap.r[J - 1], Ap.p[J])
+            self.insertInNode(ApTemp, Ap.registro[J - 1], Ap.apontador[J])
         Ap.n = (Ordem//2)
         ApTemp.apontador[0] = Ap.apontador[(Ordem//2) + 1]
         RegRetorno = Ap.registro[(Ordem//2)]
@@ -134,7 +137,7 @@ class Arvore():
         k = Ap.n
         NaoAchouPosicao = (k > 0)
         while (NaoAchouPosicao):
-            if ( Reg.chave >= Ap.r[k - 1].chave):
+            if ( Reg.chave >= Ap.registro[k - 1].chave):
                 NaoAchouPosicao = False
                 break
             Ap.registro[k] = Ap.registro[k - 1]
@@ -153,17 +156,38 @@ class Arvore():
             i = 0
             while i < Ap.n:
                 self.printTree(Ap.apontador[i])
-                print(Ap.registro[i].chave, "-", Ap.r[i].elemento)
+                print(Ap.registro[i].chave, "-", Ap.registro[i].elemento)
                 i += 1
                 self.printTree(Ap.apontador[i])
+
+    def imprimir(self) -> None:
+        nivel: int = 0
+        if self.Apontador != None:
+            self.__imprimir_recursivo(self.Apontador, nivel)
+
+
+    def __imprimir_recursivo(self, pagina: PaginaNode, nivel: int):
+        if(pagina==None):
+            return
+        nivel += 1
+        print(f"nível {nivel}:", end='')
+        print('[',end='')
+        for registro in pagina.registro:
+            if(registro!=None):    
+                print(registro.chave,end=';')
+        print(f'] - quantidade de filhos -> {(pagina.ordem + 1) - pagina.apontador.count(None)}')
+
+        for pagina in pagina.apontador:
+            self.__imprimir_recursivo(pagina, nivel)
+
+    def buscaIntervalo(self, paginaAp: PaginaNode): 
+        pass 
 
 def main():
 
     arvore = Arvore()
 
     arvore.readFile("catalogo.json")
-    print("\n\nDictionary\n\n")
-    # print(dataframe.to_string()) #ok
 
 if __name__ == '__main__':
     main()
