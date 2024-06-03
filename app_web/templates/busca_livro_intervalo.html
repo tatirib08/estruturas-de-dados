@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bücher</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+
+    *{
+      font-family: "Bodoni Moda", serif;
+      font-weight: normal;
+      font-size: 1.5rem;
+    }
+
+    body {
+      background-color: #FFE7CF;
+    }
+
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      background-color:#D8B092;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    .debug{
+      border: 10px solid red;
+    }
+
+    .rectangle{
+      background-color: #D8B092;
+      border-radius: 2vh / 1vw ;
+      font-size: 2.5rem;
+    }
+
+    .menu{
+      /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+      font-size: 1rem;
+      /* font-weight:normal; */
+    }
+
+    .fonte{
+      font-family:Verdana, Geneva, Tahoma, sans-serif !important;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">
+      <img src="../static/img/logo-bucher1.png" width="50" height="50" class="d-inline-block align-top" alt="">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item ">
+          <a class="menu nav-link" href="{{url_for('principal')}}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="menu nav-link" href="{{url_for('catalogo')}}">Catálogo</a>
+        </li>
+        <li>
+          <a class="menu nav-link" href="{{url_for('baixarCatalogo')}}">Baixar catálogo </a>
+        </li>
+        <li>
+          <a class="menu nav-link" href="{{url_for('addLivro')}}"  >Adicionar livro</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div  id="quadradoGrande" class="container-fluid d-flex justify-content-center">  
+    <div class="row mt-5">
+      <div class="container-fluid d-flex flex-column justify-content-center col-8">
+
+        <div class="fonte container-fluid rectangle w-100 p-5 flex-fill">
+          <p id="" class="h3 text-center">BUSCA POR INTERVALO</p>
+
+        <form name="myForm"  action="http://127.0.0.1:5000/buscaIntervalo" onsubmit="return validarBusca()" method="post">
+            
+            <select id="options" name="options" onchange="verificaEscolha()" class="fonte" required="required">
+                <option value="1">Por nome</option>
+                <option value="2">Por preço</option>
+            </select>
+            
+            <div class="row mb-3">
+              <div class="fonte col-md-4">
+                Primeira letra
+              </div>
+              <div class="fonte col-md-8">
+                <input type="text" size="1" maxlength="1" name="fprimeiraletra" id="fprimeiraletra">
+              </div>
+            </div>
+
+            <div class="fonte row mb-3">
+              <div class="fonte col-md-4">
+                Ultima letra
+              </div>
+              <div class="fonte col-md-8">
+                <input type="text" size="1" maxlength="1" name="fultimaletra" id="fultimaletra">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="fonte col-md-4">
+                  Valor minimo
+                </div>
+                <div class="fonte col-md-8">
+                  <input type="number" name="fmin" id="fmin" disabled>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="fonte col-md-4">
+                  Valor maximo
+                </div>
+                <div class="fonte col-md-8">
+                  <input type="number" name="fmax" id="fmax" disabled>
+                </div>
+            </div>
+            <div class="row mt-2">
+
+                <!-- <div class="fonte col-md-6 d-flex justify-content-center ">
+                    <input id="BuscaPreco" class="btn-secundary" type="submit" value="Busca por preço" disabled>
+                </div> -->
+                <div class="fonte col-md-6 d-flex justify-content-center ">
+                    <input  id="busca" class="btn-secundary" type="submit" value="Busca" >
+                </div>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+      <div class="col-4">
+        <img id="fotoLivro" src="../static/img/livro.jpg" class="img-fluid">
+      </div>
+    </div>
+  </div>
+
+  <script>
+  async function validarBusca()
+  {
+
+    var input = document.getElementById("options").value;
+
+    let fprimeiraletra = document.getElementById("fprimeiraletra").value;
+
+    let fultimaletra = document.getElementById("fultimaletra").value;
+
+    let fmin = document.getElementById("fmin").value;
+
+    let fmax = document.getElementById("fmax").value;
+
+    if(input == "1"){ //por nome
+        if (!fprimeiraletra || fprimeiraletra.value=="")
+        {
+            alert("Informe a primeira letra")
+            return false;
+        }
+        if (!fultimaletra || fultimaletra.value=="")
+        {
+            alert("Informe a ultima letra")
+            return false;
+        }
+
+        if(fultimaletra < fprimeiraletra)
+        {
+            alert("A última letra deve ser maior que a primeira");
+            return false;
+        }
+    }
+    if(input == "2"){ //por preço
+        if (!fmax || fmax.value=="")
+        {
+            alert("Informe o valor maximo")
+            return false;
+        }
+        if (!fmin || fmin.value=="")
+        {
+            alert("Informe o valor minimo")
+            return false;
+        }
+    }
+  
+    return true;    
+  }
+
+ 
+  function verificaEscolha()
+  {
+    var input = document.getElementById("options").value;
+
+    if(input == "1"){ //por nome
+        document.getElementById("fprimeiraletra").disabled = false;
+        document.getElementById("fultimaletra").disabled = false;
+        document.getElementById("fmin").disabled = true;
+        document.getElementById("fmax").disabled = true;
+        
+    }
+    if(input == "2"){ //por preço
+        document.getElementById("fmin").disabled = false;
+        document.getElementById("fmax").disabled = false;
+        document.getElementById("fprimeiraletra").disabled = true;
+        document.getElementById("fultimaletra").disabled = true;
+    
+    }
+  }
+
+
+
+  </script>
+</body>
+
+
+</html>

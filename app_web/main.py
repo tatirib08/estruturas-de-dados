@@ -66,5 +66,26 @@ def novoLivro():
     # return jsonify(livros.catalogo), 201
     return render_template('catalogo.html')
 
+@app.route('/mostrarBusca')
+def mostrarBusca():
+
+    return render_template('busca_livro_intervalo.html')
+
+@app.route('/buscaIntervalo', methods=['POST'])
+def buscaIntervalo():
+    # print(request.form)
+
+    if(request.form["options"] == "1"):
+        primeira_letra = request.form["fprimeiraletra"]
+        ultima_letra = request.form["fultimaletra"]
+        print("\nPrimeira letra: ", primeira_letra)
+        print("\nUltima letra: ", ultima_letra)
+    if(request.form["options"]== "2"): 
+        valor_min = request.form["fmin"]
+        valor_max = request.form["fmax"]
+        print("Valor min: ", valor_min)
+        print("Valor max: ", valor_max)
+
+    return render_template('catalogo.html')
 
 app.run(debug = True)
