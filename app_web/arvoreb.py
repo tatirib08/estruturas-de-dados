@@ -73,13 +73,16 @@ class ArvoreB():
     def teste(self):
         
         print("Buscando")
-        self.busca_por_intervalo(self.raiz, "e", "e", 1)
+        lista = []
+        lista = self.busca_por_intervalo(self.raiz, 'a', 'c', 1)
+        print(lista)
 
 
     def busca_por_intervalo(self,  paginaAtual : Pagina,inicio, fim, tipoBusca : int):
         # busca por nome: 1
         # busca por preço: 2
         # Verifica se a página é uma folha
+        registros_no_intervalo = []
         eh_folha = len(paginaAtual.paginas) == 0
 
         # Percorre todos os registros da página atual
@@ -87,18 +90,23 @@ class ArvoreB():
             registro = paginaAtual.registros[i]
             # Se o registro estiver no intervalo add na lista
             if(tipoBusca == 1):
-                if inicio <= unidecode(registro.chave[0].lower()) <= fim:
-                    print(registro.chave)
+                if inicio <= unidecode(registro.chave[0]).lower() <= fim:
+                    # print(registro.chave)
+                    registros_no_intervalo.append(str(registro.chave))
             if(tipoBusca == 2): 
                 if inicio <= registro.chave <= fim:
-                    print(registro.chave)
+                    # print(registro.chave)
+                    registros_no_intervalo.append(registro.chave)
+
             # Se a página não for folha, percorre a subárvore da esquerda antes de imprimir o registro
             if not eh_folha:
-                self.busca_por_intervalo(paginaAtual.paginas[i], inicio, fim, tipoBusca)
+                registros_no_intervalo+=(self.busca_por_intervalo(paginaAtual.paginas[i], inicio, fim, tipoBusca)) 
 
         # Se a página não for folha, percorre a subárvore da direita após imprimir todos os registros
         if not eh_folha:
-            self.busca_por_intervalo(paginaAtual.paginas[len(paginaAtual.registros)], inicio, fim, tipoBusca)
+            registros_no_intervalo+=(self.busca_por_intervalo(paginaAtual.paginas[len(paginaAtual.registros)], inicio, fim, tipoBusca)) 
+        
+        return registros_no_intervalo
 
 
     def inserir(self, chave: any, dado: any) -> None:

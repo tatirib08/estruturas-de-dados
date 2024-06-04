@@ -112,12 +112,13 @@ def buscaIntervaloNome(primeira_letra: str, ultima_letra: str) -> dict:
         arvore.inserir(chave, dado)
     
     #chamar a função da arvore de buscar por intervalo (vai retornar lista com todos os ids)
-
+    registrosNoIntervalo = arvore.busca_por_intervalo(arvore.raiz, primeira_letra, ultima_letra, 1)
     '''
     intervalo = arvore.buscaPorIntervalo(primeira_letra, ultima_letra)
     '''
     
     #retornar a lista com todos os ids ou o dicionario só com os elementos desses ids
+    return registrosNoIntervalo
 
 def buscaIntervaloPreco(valor_min: float, valor_max: float) -> dict:
 
@@ -140,9 +141,10 @@ def buscaIntervaloPreco(valor_min: float, valor_max: float) -> dict:
         arvore.inserir(chave, dado)
     
     #chamar a função da arvore de buscar por intervalo (vai retornar lista com todos os ids)
-
+    registrosNoIntervalo = arvore.busca_por_intervalo(arvore.raiz,valor_min,valor_max, 2)
     '''
     intervalo = arvore.buscaPorIntervalo(primeira_letra, ultima_letra)
     '''
     
     #retornar a lista com todos os ids ou o dicionario só com os elementos desses ids
+    return registrosNoIntervalo
