@@ -1,5 +1,6 @@
 import bisect
 import json
+from unidecode import unidecode
 class Registro():
     def __init__(self, chave: any, dado: any) -> None:
         self.chave: any = chave
@@ -12,7 +13,6 @@ class Pagina():
         self.registros: list = []
         self.paginas: list = []
         self.pagina_cima = pagina_cima
-
 
     def inserir_registro(self, registro_para_inserir: Registro) -> bool:
 
@@ -69,6 +69,36 @@ class ArvoreB():
     def __init__(self, grau: int = 1):
         self.grau = grau
         self.raiz = None
+
+    def teste(self):
+        
+        print("Buscando")
+        self.busca_por_intervalo(self.raiz, "e", "e", 1)
+
+
+    def busca_por_intervalo(self,  paginaAtual : Pagina,inicio, fim, tipoBusca : int):
+        # busca por nome: 1
+        # busca por preço: 2
+        # Verifica se a página é uma folha
+        eh_folha = len(paginaAtual.paginas) == 0
+
+        # Percorre todos os registros da página atual
+        for i in range(len(paginaAtual.registros)):
+            registro = paginaAtual.registros[i]
+            # Se o registro estiver no intervalo add na lista
+            if(tipoBusca == 1):
+                if inicio <= unidecode(registro.chave[0].lower()) <= fim:
+                    print(registro.chave)
+            if(tipoBusca == 2): 
+                if inicio <= registro.chave <= fim:
+                    print(registro.chave)
+            # Se a página não for folha, percorre a subárvore da esquerda antes de imprimir o registro
+            if not eh_folha:
+                self.busca_por_intervalo(paginaAtual.paginas[i], inicio, fim, tipoBusca)
+
+        # Se a página não for folha, percorre a subárvore da direita após imprimir todos os registros
+        if not eh_folha:
+            self.busca_por_intervalo(paginaAtual.paginas[len(paginaAtual.registros)], inicio, fim, tipoBusca)
 
 
     def inserir(self, chave: any, dado: any) -> None:
@@ -235,12 +265,15 @@ def main():
     # arvore.imprimir_dados_em_ordem()
     # arvore.imprimir_paginas_pre_ordem()
 
-    registro: Registro = arvore.buscar("1984")
-    if registro == None:
-        print("Registro não existe")
-    else:
-        print(f"Chave -> {registro.chave}")
-        print(f'Dado -> {registro.dado}')
+    # registro: Registro = arvore.buscar("1984")
+    # if registro == None:
+    #     print("Registro não existe")
+    # else:
+    #     print(f"Chave -> {registro.chave}")
+    #     print(f'Dado -> {registro.dado}')
+
+    print("TESTANDO")
+    arvore.teste()
  
 
 if __name__ == "__main__":
