@@ -152,3 +152,71 @@ async function mostrarCatalogo(dicionario)
     }
 
 }
+
+async function validarBuscaIntervalo()
+{
+
+  var input = document.getElementById("options").value;
+
+  let fprimeiraletra = document.getElementById("fprimeiraletra").value;
+
+  let fultimaletra = document.getElementById("fultimaletra").value;
+
+  let fmin = document.getElementById("fmin").value;
+
+  let fmax = document.getElementById("fmax").value;
+
+  if(input == "1"){ //por nome
+      if (!fprimeiraletra || fprimeiraletra.value=="")
+      {
+          alert("Informe a primeira letra")
+          return false;
+      }
+      if (!fultimaletra || fultimaletra.value=="")
+      {
+          alert("Informe a ultima letra")
+          return false;
+      }
+
+      if(fultimaletra < fprimeiraletra)
+      {
+          alert("A última letra deve ser maior que a primeira");
+          return false;
+      }
+  }
+  if(input == "2"){ //por preço
+      if (!fmax || fmax.value=="")
+      {
+          alert("Informe o valor maximo")
+          return false;
+      }
+      if (!fmin || fmin.value=="")
+      {
+          alert("Informe o valor minimo")
+          return false;
+      }
+  }
+
+  return true;    
+}
+
+
+function verificaEscolhaIntervalo()
+{
+  var input = document.getElementById("options").value;
+
+  if(input == "1"){ //por nome
+      document.getElementById("fprimeiraletra").disabled = false;
+      document.getElementById("fultimaletra").disabled = false;
+      document.getElementById("fmin").disabled = true;
+      document.getElementById("fmax").disabled = true;
+      
+  }
+  if(input == "2"){ //por preço
+      document.getElementById("fmin").disabled = false;
+      document.getElementById("fmax").disabled = false;
+      document.getElementById("fprimeiraletra").disabled = true;
+      document.getElementById("fultimaletra").disabled = true;
+  
+  }
+}
