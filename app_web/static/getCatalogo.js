@@ -9,6 +9,8 @@ divBuscaIntervalo = document.getElementById("quadradoGrande")
 
 botaoFecharIntervalo = document.getElementById("busca-intervalo-botao-fechar")
 
+formIntervalo = document.getElementById("myForm");
+
 botaoBusca.addEventListener('click', () => {
     catalogo = getCatalogo().then(
         catalogo =>
@@ -34,14 +36,41 @@ botaoBusca.addEventListener('click', () => {
     )
 })
 
-botaoDefinirIntervalo.addEventListener('click', () => {
+botaoDefinirIntervalo.addEventListener('click', mostrarBuscaIntervalo)
+
+botaoFecharIntervalo.addEventListener('click', esconderBuscaIntervalo)
+
+formIntervalo.addEventListener('submit', function(event){
+
+    if(validarBuscaIntervalo() == false)
+    {
+        return false;
+    }
+
+    event.preventDefault(); 
+    const formData = new FormData(this);
+
+    fetch('http://127.0.0.1:5000/buscaIntervalo', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        return response.json(); // Se a resposta for JSON
+    })
+    .then(data => {
+        console.log(data);
+        esconderBuscaIntervalo()
+    })
+})
+
+function mostrarBuscaIntervalo(){
     divBuscaIntervalo.style.visibility = "visible";
-})
+}
 
-botaoFecharIntervalo.addEventListener('click', () => {
+function esconderBuscaIntervalo()
+{
     divBuscaIntervalo.style.visibility = "hidden";
-})
-
+}
 
 async function getCatalogo()
 {
@@ -50,6 +79,7 @@ async function getCatalogo()
    
     return data
 }
+
 
 function verificarBusca()
 {
@@ -153,7 +183,7 @@ async function mostrarCatalogo(dicionario)
 
 }
 
-async function validarBuscaIntervalo()
+function validarBuscaIntervalo()
 {
 
   var input = document.getElementById("options").value;
