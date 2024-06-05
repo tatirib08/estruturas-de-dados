@@ -109,7 +109,7 @@ async function mostrarCatalogo(dicionario)
     
     
             let quadradoGrande = document.createElement("div");
-            quadradoGrande.className += " fonte container col-sm-3 rectangle p-2"
+            quadradoGrande.className += "fonte container col-sm-2 rectangle p-2"
             catalogo.appendChild(quadradoGrande);
     
             let painelNome = document.createElement("p");
