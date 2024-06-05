@@ -46,6 +46,7 @@
 
     .menu{
       /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+      color:black;
       font-size: 1rem;
       /* font-weight:normal; */
     }
@@ -54,10 +55,98 @@
       font-family:Verdana, Geneva, Tahoma, sans-serif;
     }
 
+    #quadradoGrande{
+      position:fixed;
+      z-index: 1000;
+      height: 100%;
+      visibility: hidden;
+      backdrop-filter: blur(10px); /* Efeito de desfoque */
+      -webkit-backdrop-filter: blur(10px); /* Compatibilidade com navegadores WebKit */
+    }
+
+    #botao-definir-intervalo{
+      background-color: transparent;
+      border: none
+    }
+    #botao-definir-intervalo:hover{
+      cursor: pointer;
+    }
+    #botao-definir-intervalo:active{
+      border:none;
+      outline: none;
+    }
+
   </style>
 </head>
 
 <body>
+
+  <div  id="quadradoGrande" class="container-fluid d-flex justify-content-center">  
+    <div class="container-fluid d-flex flex-column justify-content-center col-8">
+      <div class="row">
+        <div class="fonte container-fluid rectangle w-100 px-5 pb-5 pt-0 flex-fill">
+          <div class="fonte m-0 p-0 d-flex justify-content-end">
+            <input id="busca-intervalo-botao-fechar" class="btn-secundary px-3" type="submit" value="X" >
+          </div>
+          <p id="" class="h3 text-center">BUSCA POR INTERVALO</p>
+
+          <form name="myForm"  action="http://127.0.0.1:5000/buscaIntervalo" onsubmit="return validarBusca()" method="post">
+              
+              <select id="options" name="options" onchange="verificaEscolha()" class="fonte" required="required">
+                  <option value="1">Por nome</option>
+                  <option value="2">Por preço</option>
+              </select>
+              
+              <div class="row mb-3">
+                <div class="fonte col-md-4">
+                  Primeira letra
+                </div>
+                <div class="fonte col-md-8">
+                  <input type="text" size="1" maxlength="1" name="fprimeiraletra" id="fprimeiraletra">
+                </div>
+              </div>
+
+              <div class="fonte row mb-3">
+                <div class="fonte col-md-4">
+                  Ultima letra
+                </div>
+                <div class="fonte col-md-8">
+                  <input type="text" size="1" maxlength="1" name="fultimaletra" id="fultimaletra">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="fonte col-md-4">
+                    Valor minimo
+                  </div>
+                  <div class="fonte col-md-8">
+                    <input type="number" name="fmin" id="fmin" disabled>
+                  </div>
+              </div>
+
+              <div class="row mb-3">
+                  <div class="fonte col-md-4">
+                    Valor maximo
+                  </div>
+                  <div class="fonte col-md-8">
+                    <input type="number" name="fmax" id="fmax" disabled>
+                  </div>
+              </div>
+              <div class="row mt-2">
+
+                  <!-- <div class="fonte col-md-6 d-flex justify-content-center ">
+                      <input id="BuscaPreco" class="btn-secundary" type="submit" value="Busca por preço" disabled>
+                  </div> -->
+                  <div class="fonte col-md-6 d-flex justify-content-center ">
+                      <input  id="busca" class="btn-secundary" type="submit" value="Busca" >
+                  </div>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <nav class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#">
@@ -85,13 +174,18 @@
       </ul>
      
       <div class="form-inline my-2 my-lg-0">
-        <input id="fsearch" class="fonte form-control mr-sm-2" placeholder="Search" aria-label="Search">
-        <button id='fsearchbtn' class="fonte btn my-2 my-sm-0">Search</button>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li> 
+            <button id="botao-definir-intervalo" class="menu nav-link" href=""  >Busca por intervalo</a>
+          </li>
+        </ul>
+        
+        <input id="fsearch" class="fonte form-control mr-sm-2" placeholder="Nome" aria-label="Nome">
+        <button id='fsearchbtn' class="fonte btn my-2 my-sm-0">Buscar</button>
       </div>
       
     </div>
   </nav>
-
 
   <div id="catalogo" class="container d-flex justify-content-center flex-wrap p-4">  
 

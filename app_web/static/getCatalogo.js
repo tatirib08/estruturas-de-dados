@@ -4,6 +4,11 @@ getCatalogo().then(response => {mostrarCatalogo(response)})
 inputBusca = botaoBusca = document.getElementById("fsearch")
 botaoBusca = document.getElementById("fsearchbtn")
 
+botaoDefinirIntervalo = document.getElementById("botao-definir-intervalo") 
+divBuscaIntervalo = document.getElementById("quadradoGrande")
+
+botaoFecharIntervalo = document.getElementById("busca-intervalo-botao-fechar")
+
 botaoBusca.addEventListener('click', () => {
     catalogo = getCatalogo().then(
         catalogo =>
@@ -28,6 +33,15 @@ botaoBusca.addEventListener('click', () => {
         }
     )
 })
+
+botaoDefinirIntervalo.addEventListener('click', () => {
+    divBuscaIntervalo.style.visibility = "visible";
+})
+
+botaoFecharIntervalo.addEventListener('click', () => {
+    divBuscaIntervalo.style.visibility = "hidden";
+})
+
 
 async function getCatalogo()
 {

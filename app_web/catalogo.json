@@ -1,16 +1,4 @@
 {
-    "0": {
-        "nome": "É assim que acaba",
-        "autor": "Colleen Hoover",
-        "quantidade": 43,
-        "img": "https://m.media-amazon.com/images/I/9112cWOV-OL._SY385_.jpg"
-    },
-    "1": {
-        "nome": "É assim que começa",
-        "autor": "Colleen Hoover",
-        "quantidade": 17,
-        "img": "https://m.media-amazon.com/images/I/813TDwBsihL._SY385_.jpg"
-    },
     "2": {
         "nome": "A Hipótese do Amor",
         "autor": "Ali Hazelwood",
@@ -20,7 +8,7 @@
     "3": {
         "nome": "Uma Breve História do Tempo",
         "autor": "Stephen Hawking",
-        "quantidade": 42,
+        "quantidade": 24,
         "img": "https://m.media-amazon.com/images/I/51aG2+outOL._SY445_SX342_.jpg"
     },
     "4": {
@@ -38,7 +26,7 @@
     "6": {
         "nome": "Breves Respostas para Grandes Questões",
         "autor": "Stephen Hawking",
-        "quantidade": 39,
+        "quantidade": 38,
         "img": "https://m.media-amazon.com/images/I/51uywlQG4UL._SY445_SX342_.jpg"
     },
     "7": {
