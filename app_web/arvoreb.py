@@ -124,12 +124,29 @@ class ArvoreB():
         
         return registros_no_intervalo
 
-    def teste(self):
-        
-        print("Buscando")
-        lista = []
-        lista = self.busca_por_intervalo(self.raiz, 'a', 'é', 1)
-        print(lista)
+    def encontrar_menor(self):
+        if self.raiz == None:
+            return None
+
+        # desce pela subárvore mais à esquerda até encontrar um nó folha
+        pagina_atual: Pagina = self.raiz
+        while len(pagina_atual.paginas) > 0:
+            pagina_atual = pagina_atual.paginas[0]
+
+        # Retorna o menor elemento (primeiro elemento na lista de chaves do nó folha)
+        return pagina_atual.registros[0]
+    
+    def encontrar_maior(self):
+        if self.raiz == None:
+            return None
+
+        # desce pela subárvore mais à direita até encontrar um nó folha
+        pagina_atual: Pagina = self.raiz
+        while len(pagina_atual.paginas) > 0:
+            pagina_atual = pagina_atual.paginas[-1]
+
+        # Retorna o maior elemento (ultimo elemento na lista de chaves do nó folha)
+        return pagina_atual.registros[-1]
 
     def imprimir_dados_em_ordem(self) -> None:
         if self.raiz != None:
@@ -149,6 +166,7 @@ class ArvoreB():
         nivel: int = 0
         if self.raiz != None:
             self.__imprimir_recursivo_paginas_pre_ordem(self.raiz, nivel)
+
 
     def __imprimir_recursivo_dados_em_ordem(self, pagina: Pagina):
         if len(pagina.paginas) > 0:
@@ -259,7 +277,7 @@ def main():
 
         for dicionario in dr.items():
             (id, linha) = dicionario
-            chave = linha["nome"]
+            chave = unidecode(linha["nome"]).lower()
             dado = id
             arvore.inserir(chave, dado)
   
@@ -274,9 +292,13 @@ def main():
     #     print(f"Chave -> {registro.chave}")
     #     print(f'Dado -> {registro.dado}')
 
-    print("TESTANDO")
-    arvore.teste()
- 
+    # print("TESTANDO")
+    # arvore.teste()
+
+    print(arvore.encontrar_maior().chave)
+
+    print(arvore.encontrar_menor().chave)
+
 
 if __name__ == "__main__":
     main()
