@@ -93,40 +93,42 @@ class ArvoreB():
         if self.raiz != None:
             return self.__buscar_registro(chave, self.raiz)
 
-    def busca_por_intervalo(self,  paginaAtual : Pagina,inicio, fim, tipoBusca : int):
+    def busca_por_intervalo(self,  paginaAtual : Pagina, inicio, fim, tipoBusca : int):
         # busca por nome: 1
         # busca por preço: 2
         # Verifica se a página é uma folha
         registros_no_intervalo = []
         eh_folha = len(paginaAtual.paginas) == 0
 
-        # Se a página não for folha, percorre a subárvore da esquerda antes de imprimir o registro
-        if len(paginaAtual.paginas) > 0:
-            registros_no_intervalo+=(self.busca_por_intervalo(paginaAtual.paginas[0], inicio, fim, tipoBusca)) 
-
         # Percorre todos os registros da página atual
         for i in range(len(paginaAtual.registros)):
+            # Se a página não for folha, percorre a subárvore da esquerda antes de imprimir o registro
+            if not eh_folha:
+                registros_no_intervalo+=(self.busca_por_intervalo(paginaAtual.paginas[i], inicio, fim, tipoBusca)) 
+            
             registro = paginaAtual.registros[i]
             # Se o registro estiver no intervalo add na lista
             if(tipoBusca == 1):
-                if inicio <= unidecode(registro.chave[0]).lower() <= fim:
+                if unidecode(inicio).lower() <= unidecode(registro.chave[0]).lower() <= unidecode(fim).lower():
                     # print(registro.chave)
-                    registros_no_intervalo.append({"chave": registro.chave, "dado":registro.dado})
+                    registros_no_intervalo.append({"chave": registro.chave, "dado": registro.dado})
             if(tipoBusca == 2): 
                 if inicio <= registro.chave <= fim:
                     # print(registro.chave)
-                    registros_no_intervalo.append({"chave": registro.chave, "dado":registro.dado})
+                    registros_no_intervalo.append({"chave": registro.chave, "dado": registro.dado})
 
-            if len(paginaAtual.paginas) > i + 1:
-                registros_no_intervalo+=(self.busca_por_intervalo(paginaAtual.paginas[i + 1], inicio, fim, tipoBusca)) 
 
+        # Se a página não for folha, percorre a subárvore da direita após imprimir todos os registros
+        if not eh_folha:
+            registros_no_intervalo+=(self.busca_por_intervalo(paginaAtual.paginas[len(paginaAtual.registros)], inicio, fim, tipoBusca)) 
+        
         return registros_no_intervalo
 
     def teste(self):
         
         print("Buscando")
         lista = []
-        lista = self.busca_por_intervalo(self.raiz, 'a', 'c', 1)
+        lista = self.busca_por_intervalo(self.raiz, 'a', 'é', 1)
         print(lista)
 
     def imprimir_dados_em_ordem(self) -> None:
@@ -257,14 +259,9 @@ def main():
 
         for dicionario in dr.items():
             (id, linha) = dicionario
-            catalogo[int(id)]={'id': int(id), 'nome': linha["nome"],'autor': linha["autor"], 'quantidade': linha["quantidade"], 'img': linha['img']}
-            
-    tamanho = len(catalogo)
-    for i in range(tamanho):
-        chave = catalogo[i]["nome"]
-        dado = catalogo[i]["id"]
-        # print(f'inserindo {chave}')
-        arvore.inserir(chave, dado)
+            chave = linha["nome"]
+            dado = id
+            arvore.inserir(chave, dado)
   
     # arvore.imprimir_registros_em_ordem()
     # arvore.imprimir_dados_em_ordem()
