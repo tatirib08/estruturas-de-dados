@@ -58,8 +58,7 @@ formIntervalo.addEventListener('submit', function(event){
         return response.json(); // Se a resposta for JSON
     })
     .then(data => {
-        console.log(data);
-        esconderBuscaIntervalo()
+        mostrarCatalogo(data).then(data => {esconderBuscaIntervalo()})
     })
 })
 
@@ -90,7 +89,6 @@ function verificarBusca()
 
 async function mostrarCatalogo(dicionario)
 {
-
     let nomeLivro;
     let autorLivro;
     let estoqueLivro; 

@@ -13,6 +13,8 @@ def buscarNoDicionario(lista_ids: list) -> dict:
     for id in lista_ids:
         retorno[str(id)] = livros.catalogo[id]
 
+    print(retorno)
+
     return retorno
 
 def buscaIntervaloNome(primeira_letra: str, ultima_letra: str) -> dict:
@@ -28,8 +30,6 @@ def buscaIntervaloNome(primeira_letra: str, ultima_letra: str) -> dict:
 
     #chamar a função da arvore de buscar por intervalo (vai retornar lista com todos os ids)
     registrosNoIntervalo = arvore.busca_por_intervalo(arvore.raiz, primeira_letra, ultima_letra, 1)
-    
-    print(registrosNoIntervalo)
 
     lista_ids: list = []
 
@@ -141,6 +141,7 @@ def buscaIntervalo():
         print("Valor min: ", valor_min)
         print("Valor max: ", valor_max)
         dicionario = buscaIntervaloPreco(valor_min, valor_max)
+
     return jsonify(dicionario), 201
 
 app.run(debug = True)
