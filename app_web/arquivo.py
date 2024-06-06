@@ -16,18 +16,28 @@ class Livros():
 
         self.catalogo = dict()
 
-        # self.criarDic()
-        # self.salvarArquivo()
-        self.lerJson()
+        self.criarDic()
+        self.salvarArquivo()
+        # self.lerJson()
 
     def criarDic(self):
         with open(self.csv) as file:
             id = 0
             dr = csv.DictReader(file)
 
+            precos: list = []
+
             for linha in dr:
-                self.catalogo[id]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': random.randint(1,50), 'img': linha['img']}
-                id+=1 
+                preco = f'{random.randint(19,50)}.{random.randint(80,99)}'
+                while preco in precos:
+                    preco = f'{random.randint(19,50)}.{random.randint(80,99)}'
+
+                precos.append(preco)
+
+                self.catalogo[id]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': random.randint(1,50), 'preco': preco, 'img': linha['img']}
+                id+=1
+
+
 
     def lerJson(self):
         with open(self.json) as file:

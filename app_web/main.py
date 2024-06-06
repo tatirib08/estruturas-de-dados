@@ -54,10 +54,13 @@ def buscaIntervaloPreco(valor_min: float, valor_max: float) -> dict:
     #chamar a função da arvore de buscar por intervalo (vai retornar lista com todos os ids)
     registrosNoIntervalo = arvore.busca_por_intervalo(arvore.raiz,valor_min,valor_max, 2)
 
-    print(registrosNoIntervalo)
-    
+    lista_ids: list = []
+
+    for registro in registrosNoIntervalo:
+        lista_ids.append(registro["dado"])
+
     #retornar a lista com todos os ids ou o dicionario só com os elementos desses ids
-    # return registrosNoIntervalo
+    return buscarNoDicionario(lista_ids)
 
 
 app = Flask(__name__)
@@ -113,10 +116,9 @@ def addLivro():
 @app.route('/novoLivro', methods=['POST'])
 def novoLivro():
     print(request.form)
-    livro = {'nome': request.form['fnome'], 'autor': request.form['fautor'] , 'quantidade': int(request.form['festoque']) , 'img': request.form['furl']}
+    livro = {'nome': request.form['fnome'], 'autor': request.form['fautor'] , 'quantidade': int(request.form['festoque']), 'preco': str(float(request.form['fpreco'])),  'img': request.form['furl']}
     id = len(livros.catalogo)
     livros.addLivro(id, livro)
-    # return jsonify(livros.catalogo), 201
     return render_template('catalogo.html')
 
 @app.route('/mostrarBusca')

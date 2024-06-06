@@ -58,6 +58,7 @@ formIntervalo.addEventListener('submit', function(event){
         return response.json(); // Se a resposta for JSON
     })
     .then(data => {
+        console.log(data)
         mostrarCatalogo(data).then(data => {esconderBuscaIntervalo()})
     })
 })
@@ -104,9 +105,10 @@ async function mostrarCatalogo(dicionario)
             /* pega os dados do json */
             nomeLivro = value['nome'];
             autorLivro = value['autor'];
+            precoLivro = value['preco']
             estoqueLivro = value['quantidade'];
             urlLivro = value['img'];
-    
+
     
             let quadradoGrande = document.createElement("div");
             quadradoGrande.className += "fonte container col-sm-2 rectangle p-2"
@@ -130,11 +132,18 @@ async function mostrarCatalogo(dicionario)
             painelAutor.className += "autorLivro h6 text-center align-self-end";
             painelAutor.innerHTML = "Autor: " + autorLivro;
             quadradoGrande.appendChild(painelAutor);
+
+            let painelPreco = document.createElement("p");
+            painelPreco.className += "h6 text-center align-self-end";
+            painelPreco.innerHTML = "Preço: R$" + precoLivro;
+            quadradoGrande.appendChild(painelPreco);
     
             let painelEstoque = document.createElement("p");
             painelEstoque.className += "quantidadeLivro h6 text-center align-self-end";
             painelEstoque.innerHTML = "Estoque: " + estoqueLivro;
             quadradoGrande.appendChild(painelEstoque);
+
+
     
             let divBotoes = document.createElement("div");
             divBotoes.className += "d-flex flex-row align-content-center justify-content-around"

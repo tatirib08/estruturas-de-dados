@@ -113,6 +113,15 @@
 
             <div class="fonte row mb-3">
               <div class="fonte col-md-4">
+                Preço:
+              </div>
+              <div class="fonte col-md-8">
+                <input type="number" name="fpreco" id="fpreco" step="0.01">
+              </div>
+            </div>
+
+            <div class="fonte row mb-3">
+              <div class="fonte col-md-4">
                 Estoque:
               </div>
               <div class="fonte col-md-8">
@@ -145,11 +154,12 @@
   </div>
 
   <script>
-  async  function addLivro()
+  function addLivro()
   {
     
     let fnome = document.getElementById("fnome");
     let fautor = document.getElementById("fautor");
+    let fpreco = document.getElementById("fpreco");
     let festoque = document.getElementById("festoque");
     let fcapa = document.getElementById("furl");
 
@@ -159,6 +169,10 @@
     }
     if (!fautor || fautor.value.trim()==""){
       alert("Informe o autor")
+      return false;
+    }
+    if (!fpreco || fpreco.value.trim()==""){
+      alert("Informe o preço")
       return false;
     }
     if (!festoque || festoque.value.trim()==""){
