@@ -222,16 +222,21 @@ function validarBuscaIntervalo()
       }
   }
   if(input == "2"){ //por preço
-      if (!fmax || fmax.value=="")
-      {
-          alert("Informe o valor maximo")
-          return false;
-      }
-      if (!fmin || fmin.value=="")
-      {
-          alert("Informe o valor minimo")
-          return false;
-      }
+    if (!fmax || fmax.value=="")
+    {
+        alert("Informe o valor maximo")
+        return false;
+    }
+    if (!fmin || fmin.value=="")
+    {
+        alert("Informe o valor minimo")
+        return false;
+    }
+    if(parseInt(fmax) < parseInt(fmin))
+    {
+      alert("O valor máximo deve ser maior que o valor mínimo");
+      return false; 
+    }   
   }
 
   return true;    
