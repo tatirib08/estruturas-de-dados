@@ -156,7 +156,7 @@
   </div>
 
   <script>
-  async function validarBusca()
+  function validarBusca()
   {
 
     var input = document.getElementById("options").value;
@@ -169,34 +169,43 @@
 
     let fmax = document.getElementById("fmax").value;
 
-    if(input == "1"){ //por nome
-        if (!fprimeiraletra || fprimeiraletra.value=="")
+    alert(input);
+    if(input == "1")
+    { //por nome
+        if (fprimeiraletra.value=="")
         {
-            alert("Informe a primeira letra")
-            return false;
+          alert("Informe a primeira letra")
+          return false;
         }
-        if (!fultimaletra || fultimaletra.value=="")
+        if (fultimaletra.value=="")
         {
-            alert("Informe a ultima letra")
-            return false;
+          alert("Informe a ultima letra")
+          return false;
         }
 
         if(fultimaletra < fprimeiraletra)
         {
-            alert("A última letra deve ser maior que a primeira");
-            return false;
+          alert("A última letra deve ser maior que a primeira");
+          return false;
         }
     }
-    if(input == "2"){ //por preço
-        if (!fmax || fmax.value=="")
+    
+    if(input == "2")
+    { //por preço
+        if (fmax=="")
         {
             alert("Informe o valor maximo")
             return false;
         }
-        if (!fmin || fmin.value=="")
+        if (fmin=="")
         {
             alert("Informe o valor minimo")
             return false;
+        }
+        if(parseInt(fmax) < parseInt(fmin))
+        {
+          alert("O valor máximo deve ser maior que o valor mínimo");
+          return false; 
         }
     }
   
