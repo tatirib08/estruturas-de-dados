@@ -16,9 +16,9 @@ class Livros():
 
         self.catalogo = dict()
 
-        self.criarDic()
-        self.salvarArquivo()
-        # self.lerJson()
+        # self.criarDic()
+        # self.salvarArquivo()
+        self.lerJson()
 
     def criarDic(self):
         with open(self.csv) as file:
@@ -45,7 +45,7 @@ class Livros():
         
             for dicionario in dr.items():
                 (id, linha) = dicionario
-                self.catalogo[int(id)]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': linha["quantidade"], 'img': linha['img']}
+                self.catalogo[int(id)]={'nome': linha["nome"],'autor': linha["autor"], 'quantidade': linha["quantidade"], 'preco': linha['preco'], 'img': linha['img']}
                 
 
     def addLivro(self, id, novoLivro):
