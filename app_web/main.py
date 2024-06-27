@@ -113,6 +113,10 @@ def baixarCatalogo():
 def addLivro():
     return render_template('adicionar_livro.html')
 
+@app.route('/showMap')
+def showMap(): 
+    return render_template('map.html')
+
 @app.route('/novoLivro', methods=['POST'])
 def novoLivro():
     print(request.form)
