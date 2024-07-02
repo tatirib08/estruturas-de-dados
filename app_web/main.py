@@ -4,6 +4,7 @@ from lempel_ziv_welch import LempelZivWelch
 from arvoreb import ArvoreB
 import zipfile
 import json
+from grafo_lib import Grafos
 
 livros = Livros()
 
@@ -156,6 +157,29 @@ def buscaIntervalo():
         dicionario = buscaIntervaloPreco(valor_min, valor_max)
 
     return jsonify(dicionario), 201
+
+@app.route('/calcularFrete')
+def calcularFrete(): 
+    return render_template('calcula_frete.html')
+
+@app.route('/mapa',  methods=['POST'])
+def mapa():
+
+    # cria o grafo
+    grafo = Grafos()
+    grafo.criaGrafo()
+
+    endereco_selecionado = request.form.get("options")
+    # print(endereco_selecionado) #funcionando
+
+    custo = grafo.caminhoMinimo(1,int(endereco_selecionado))
+    print('CUSTO CALCULADO ',custo)
+    frete = grafo.calculaFrete(custo)
+    print('FRETE CALCULADO', frete)
+    # km_rounded = round(km, 3)
+    return render_template('teste.html', frete=round(frete,2))
+
+# f"{km:.3f}"
 
 app.run(debug = True)
 

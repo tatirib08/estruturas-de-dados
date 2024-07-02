@@ -7,20 +7,30 @@ class Grafos():
         self.grafo = Graph(directed=True)
 
         #linhas e colunas da matriz de adjacencia
-        self.linhas = 6
-        self.colunas = 6
+        self.linhas = 26
+        self.colunas = 26
 
     def criaGrafo(self):
 
-        self.grafo.add_vertices(6)
+        self.grafo.add_vertices(26)
         
         for i in range (len(self.grafo.vs)):
             self.grafo.vs[i]["id"] = i+1
             self.grafo.vs[i]["label"]= str(i+1)
 
         # self.grafo.add_edges([(1,2), (2,4), (3,1), (3,2), (3,4), (4,6), (5,4),(5,2),(6,5)])
-        self.grafo.add_edges([(0,1), (1,3), (2,0), (2,1), (2,3), (3,5), (4,3), (4,1), (5,4)])
-        weights = [6, 6, 3, 2, 4, 5, 4, 3, 3]
+        # self.grafo.add_edges([(0,1), (1,3), (2,0), (2,1), (2,3), (3,5), (4,3), (4,1), (5,4)])
+        self.grafo.add_edges([
+            (0,1), (1,0),(1,2),(2,3),(3,2),(3,0),(3,4),(4,5),(4,13),(5,6),(6,5),
+            (6,7),(6,2),(2,25),(7,8),(8,9),(9,10),(10,11),(11,4),(13,12),(12,8),
+            (13,14),(14,15),(15,16),(16,17),(17,18),(18,19),(19,20),(20,21),(21,22),
+            (22,23),(23,3),(25,24),(24,23)
+        ])
+        weights = [280,280,260,170,170,550,850,1900,400,1100,1100,
+                   700,2400,500,3200,350,30,950,950,1000,1100,
+                    800,600,230,170,290,300,260,70,90,
+                    2700,700,70,140
+                   ]
         self.grafo.es['weight'] = weights
         self.grafo.es['label'] = weights
 
@@ -90,6 +100,8 @@ class Grafos():
         print("Melhor caminho é: ")
         print([x + 1 for x in shortest_path])
         print("Custo total do caminho: ", custo_total)
+
+        return custo_total
             
     def verticesAdjacentesAcessiveis(self, vertice):
 
@@ -106,6 +118,17 @@ class Grafos():
 
         print(vertices_adjacentes)
 
+    def calculaFrete(self,custo_total):
+
+        # 15 reais por km do custo
+        km = float(custo_total)/1000.00
+        frete = km * 15
+
+        # km = float(1256)/1000.00 #teste
+        # print(km)
+        # print(frete)
+
+        return frete
 
 def main():
 
@@ -116,10 +139,14 @@ def main():
     grafos.imprimeGrafo()
     print("\nNós adjacentes acessíveis a partir do nó 3: ")
     grafos.verticesAdjacentesAcessiveis(3)
-    print("\nCalculando caminho mínimo do nó 3 para o nó 5: \n")
-    grafos.caminhoMinimo(3,5)
-    print("\nCalculando o caminho mínimo do nó 1 para o nó 6: \n")
-    grafos.caminhoMinimo(1,6)
+    # print("\nCalculando caminho mínimo do nó 3 para o nó 5: \n")
+    # custo1 = grafos.caminhoMinimo(3,5)
+    # grafos.calculaFrete(custo1)
+    print("\nCalculando o caminho mínimo do nó 1 para o nó 1: \n")
+    custo2 = grafos.caminhoMinimo(1,1)
+    frete = grafos.calculaFrete(custo2)
+    print('frete a ser pago',frete)
+
 
 
 if __name__ == '__main__':
