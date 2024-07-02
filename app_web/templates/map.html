@@ -49,12 +49,15 @@
       background-color: #D8B092;
       border-radius: 2vh / 1vw ;
       font-size: 2.5rem;
+      container-type: normal;
+      size-adjust: 80%;
     }
 
     .subtitle{
       font-family:Verdana, Geneva, Tahoma, sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.0rem;
       /* font-weight: bold; */
+      margin-left: 1rem;
     }
 
     .menu{
@@ -68,7 +71,19 @@
     }
 
     #map { 
-        height: 25rem;
+      height: 25rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      /* margin-left: 1rem; */
+    }
+
+    #locais {
+      height: calc(100vh - 80px); /* Ajuste conforme a altura da navbar */
+      overflow-y: auto;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      /* margin-left: 1rem; */
+      /* margin-right: 2rem; */
     }
 
   </style>
@@ -102,23 +117,106 @@
     </div>
   </nav>
 
-  <div class="row">
-
-    <div class="col-md-6">
-        <div class=" w-100" id="map"> 
-        
+  <div class="row" style="margin-left: 1rem;margin-right: 1rem;">
+    <div class="col-md-6 d-flex flex-column">
+        <div class="row-10 flex-grow-1">
+          <div class=" w-100" id="map"></div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="row">
-
-            <div class="container-fluid rectangle w-100 p-5 flex-fill justify-content-center">
-    
+    <div class="col-md-6 d-flex flex-column" >
+       
+      <div class="row-10 flex-grow-1">
+        <div id="locais" class="rectangle w-100">
+           
+          <legend class="subtitle">Endereços disponíveis para entrega.<br> </legend>
+          <div class="container-fluid row mt-2">
+            <div class=" w-100 subtitle">
+                Retirar na loja: Condomínio Jardim Mediterrâneo
             </div>
-        </div>
-
+            <div class="w-100 subtitle">
+                Condomínio Jardim Botânico <br>
+            </div>
+            <div class="w-100 subtitle">
+                Condomínio Vila dos Ipês <br>
+            </div>
+            <div class="w-100 subtitle">
+                Condomínio Vila das Palmeiras <br>
+            </div>
+            <div class="w-100 subtitle">
+                Condomínio Art Residence <br>
+            </div>
+            <div class="w-100 subtitle">
+                Clube Adelba <br>
+            </div>
+            <div class="w-100 subtitle">
+                Shopping Paralela <br>
+            </div>
+            <div class="w-100 subtitle">FTC <br>
+            </div>
+            <div class="w-100 subtitle">
+                HiperIdeal Orlando Gomes <br>
+            </div>
+            <div class="w-100 subtitle">
+                Senai Cimatec <br>
+            </div>
+            <div class="w-100 subtitle ">
+                SESI <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Condomínio Parque Costa Verde <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Escola Concept <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Condomínio Veredas Piatã <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Clube Costa Verde <br>
+            </div>
+            <div class="w-100 subtitle ">
+                SESC <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Shopping Vilarejo Mall <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Condomínio Jaguah Residence<br>
+            </div>
+            <div class="w-100 subtitle ">
+                Armazém Paulistano <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Condomínio Vale do Jaguaripe <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Pipeline House <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Jaguaribe Itacenter <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Condomínio Premiere Jaguaribe <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Residencial Patamares <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Residencial Villa Giardino <br>
+            </div>
+            <div class="w-100 subtitle ">
+                Horto Patamares <br>
+            </div>
+          </div>
     </div>
+       
+      </div>
+    
+    </div>
+
   </div>
+
+  
 </body>
     <script src="{{url_for('static', filename='map.js')}}"></script>
 </html>
