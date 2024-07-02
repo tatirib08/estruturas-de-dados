@@ -1,3 +1,5 @@
+let btn = document.getElementById('botao-calcular-frete')
+
 var map = L.map('map').setView([-12.94531097712202, -38.39225762988138], 16);
 
 // marcadores 
@@ -33,18 +35,67 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     // attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-
 function validarEndEscolhido()
 {
-
+    event.preventDefault();
     var input = document.getElementById("options").value;
 
     alert(input);
     if(input == "1")
-        {
-            alert("É necessário escolher um endereço");
-            return false; 
+    {
+        alert("É necessário escolher um endereço");
+    }
+    else
+    {
+        fetch('http://127.0.0.1:5000/getcatalogo',{
+            method: 'POST',
+            body: JSON.stringify({
+                "options": input
+            })
+        })
+        .then(response => {
+            // return response.json(); // Se a resposta for JSON
+        })
+        .then(data => {
+            alert(`FRETE -> ${data}`)
+            
+        })
+    }
+
+    return false
+}
+
+btn.addEventListener("click", async (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    const selectedRadio = document.querySelector('input[name="options"]:checked');
+
+    if(!selectedRadio)
+    {
+        alert("É necessário selecionar um endereço");
+        return
+    }
+
+    try {
+        let bodyData = JSON.stringify({ "options": selectedRadio.value })
+        console.log("sending " + bodyData)
+        const response = await fetch("http://127.0.0.1:5000/mapa", {
+            method: "POST",
+            body: bodyData,
+            headers: { "Content-Type": "application/json" },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
         }
-  
-    return true;    
-  }
+
+        const responseData = await response.json();
+        console.log(responseData)
+        localStorage.setItem('frete', JSON.stringify(responseData['frete']))
+        window.location.href = "http://127.0.0.1:5000/carrinho";
+
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle errors appropriately (e.g., display error message)
+    }
+});

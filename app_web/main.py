@@ -169,17 +169,14 @@ def mapa():
     grafo = Grafos()
     grafo.criaGrafo()
 
-    endereco_selecionado = request.form.get("options")
-    # print(endereco_selecionado) #funcionando
+    endereco_selecionado = request.get_json()["options"]
 
     custo = grafo.caminhoMinimo(1,int(endereco_selecionado))
     print('CUSTO CALCULADO ',custo)
     frete = grafo.calculaFrete(custo)
     print('FRETE CALCULADO', frete)
-    # km_rounded = round(km, 3)
-    return render_template('teste.html', frete=round(frete,2))
 
-# f"{km:.3f}"
+    return jsonify({"frete": frete}), 201
 
 app.run(debug = True)
 

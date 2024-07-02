@@ -1,4 +1,4 @@
-import { adicionarAoCarrinho, lerCarrinho, limparCarrinho, verificarSeProdutoEstaNoCarrinho } from "./crud_carrinho.js"
+import { adicionarAoCarrinho, lerCarrinho, verificarSeProdutoEstaNoCarrinho } from "./crud_carrinho.js"
 
 getCatalogo().then(response => {mostrarCatalogo(response)})
 

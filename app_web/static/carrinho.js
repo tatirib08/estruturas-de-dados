@@ -72,7 +72,6 @@ function mostrarCarrinho(dicionario)
                     </form>
                 </div>
                 `
-                // item_carrinho.querySelector('input[type="submit"]').addEventListener('click', () => {removerDoCarrinho(key)})
                 carrinho.appendChild(item_carrinho)
 
                 soma_valor += parseFloat(precoLivro * quantidade)
@@ -85,6 +84,32 @@ function mostrarCarrinho(dicionario)
         let total_custo_div = document.getElementById("total-valor-resumo-carrinho")
         total_custo_div.innerHTML = `Valor do carrinho: R$${soma_valor.toFixed(2)}`
 
+        let div_frete = document.getElementById("div-frete");
+        
+        let frete = localStorage.getItem("frete")
+        let resultado = document.createElement("div")
+        if(frete && items_carrinho.length != 0)
+        {
+            resultado.innerHTML = "Valor do frete: R$" + JSON.parse(frete).toFixed(2)
+            let total_compra_div = document.getElementById("total-valor-compra")
+            total_compra_div.innerHTML = `Valor total compra: R$${(parseFloat(soma_valor) + parseFloat(frete)).toFixed(2)}`
+        }
+        else
+        {
+            let botaoFinalizarCompra = document.getElementById("botao-finalizar-compra");
+            botaoFinalizarCompra.disabled = true
+        }
+        if(items_carrinho.length == 0)
+        {
+            let botaoEscolherEndereco = document.getElementById("botao-escolher-endereco");
+            botaoEscolherEndereco.disabled = true
+        }
+        if(!frete)
+        {
+            resultado.innerHTML = "É necessário calcular o frete!"
+        }
+
+        div_frete.appendChild(resultado)
     }
     else
     {

@@ -9,12 +9,10 @@ export function adicionarAoCarrinho(key)
 
 export function removerDoCarrinho(key) {
     let carrinhoAtual = lerCarrinho();
-    console.log(`key -> ${key}`)
-    console.log(`carrinho antes -> ${carrinhoAtual}`)
+    
     carrinhoAtual = carrinhoAtual.filter(item => item != key);
     
     localStorage.setItem('carrinho', JSON.stringify(carrinhoAtual));
-    console.log(`carrinho depois -> ${lerCarrinho()}`)
 }
 
 export function lerCarrinho() {

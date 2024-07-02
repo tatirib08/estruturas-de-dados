@@ -94,9 +94,13 @@
 
     .carrinho-resumo {
       width: 35%;
-      max-height: 50vh;
-      background-color: #D8B092;
-      padding: 2vw;
+
+    }
+
+    #fundo-resumo{
+        background-color: #D8B092;
+        padding: 2vw;
+              
       border-radius: 2vh/1vw;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
@@ -149,11 +153,14 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item ">
-              <a class="menu nav-link" href="{{url_for('principal')}}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="menu nav-link" href="{{url_for('catalogo')}}">Catálogo</a>
-            </li>
+                <a class="menu nav-link" href="{{url_for('principal')}}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="menu nav-link" href="{{url_for('catalogo')}}">Catálogo</a>
+              </li>
+              <li>
+                <a class="menu nav-link" href="{{url_for('showMap')}}" >Mapa</a>
+              </li>
           </ul>
         </div>
       </nav>
@@ -164,20 +171,26 @@
 
       </div>
       <div class="carrinho-resumo">
-        <div class="container-fluid col">
-            <div class="resumo-heading">Resumo do Carrinho</div>
-            <hr>
-            <div class="fonte">
-              <div id="total-items-resumo-carrinho"></div>
-              <div id="total-valor-resumo-carrinho"></div>
+        <div id="fundo-resumo">
+            <div class="col">
+                <div class="resumo-heading">Resumo do Carrinho</div>
+                <hr>
+                <div class="fonte">
+                <div id="total-items-resumo-carrinho"></div>
+                <div id="total-valor-resumo-carrinho"></div>
+                </div>
+                <hr>
+                <a id="botao-escolher-endereco" class="btn btn-light mb-2 fonte" href="http://127.0.0.1:5000/calcularFrete">Escolher endereço de entrega</a>
+                <div id="div-frete" class="fonte">
+                </div>
+                <hr>
+                <div id="total-valor-compra"></div>
+                <button id='botao-finalizar-compra' class="btn btn-light">Finalizar compra</button>
             </div>
-            <hr>
-            <button class="btn btn-light">Finalizar compra</button>
-          </div>
-          <div class="placeholder">
+            <div class="placeholder">
+            </div>
         </div>
-
-      
+        
 
       </div>
     </div>
