@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bücher</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap');
+
+    * {
+      font-family: "Bodoni Moda", serif;
+      font-weight: normal;
+      font-size: 1.5rem;
+    }
+
+    body {
+      background-color: #FFE7CF;
+    }
+
+    .navbar {
+      background-color:#D8B092;
+    }
+
+    .carrinho {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .carrinho div{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    #carrinho-items {
+      width: 60%;
+    }
+
+    .item-carrinho{
+      display: flex;
+      align-items: center;
+      padding: 1vw;
+      background-color: #D8B092;
+      border-radius: 2vh/1vw;
+      box-shadow: 0 0 1vw rgba(0,0,0,0.1);
+      margin-bottom: 1vh;
+    }
+
+    .menu{
+      /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+      color:black;
+      font-size: 1rem;
+      /* font-weight:normal; */
+    }
+
+    .item-carrinho img {
+      width: 7vw;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .informacoes-item-carrinho {
+      flex: 1;
+      margin-left: 2vw;
+    }
+
+    .autor{
+        font-size: 0.8rem;
+        font-weight: lighter;
+    }
+
+    .titulo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .quantidade {
+      font-size: 1rem;
+    }
+
+    .preco-item-carrinho {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .div-btn-excluir input{
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .carrinho-resumo {
+      width: 35%;
+      max-height: 50vh;
+      background-color: #D8B092;
+      padding: 2vw;
+      border-radius: 2vh/1vw;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .resumo-heading {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1vh;
+    }
+
+    .resumo-total {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-top: 2vh;
+    }
+
+    .btn-proceed {
+      width: 100%;
+      padding: 1vh;
+      font-size: 1.2rem;
+      background-color: #D8B092;
+      border-color: #D8B092;
+    }
+
+    .btn-proceed:hover {
+      background-color: #D8B092;
+      border-color: #D8B092;
+    }
+
+    .btn-proceed:focus {
+      box-shadow: none;
+    }
+
+    .fonte {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">
+          <img src="../static/img/logo-bucher1.png" width="50" height="50" class="d-inline-block align-top" alt="">
+        </a>
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item ">
+              <a class="menu nav-link" href="{{url_for('principal')}}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="menu nav-link" href="{{url_for('catalogo')}}">Catálogo</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+  <div class="container-fluid mt-5">
+    <div class="carrinho">
+      <div id="carrinho-items">
+
+      </div>
+      <div class="carrinho-resumo">
+        <div class="container-fluid col">
+            <div class="resumo-heading">Resumo do Carrinho</div>
+            <hr>
+            <div class="fonte">
+              <div id="total-items-resumo-carrinho"></div>
+              <div id="total-valor-resumo-carrinho"></div>
+            </div>
+            <hr>
+            <button class="btn btn-light">Finalizar compra</button>
+          </div>
+          <div class="placeholder">
+        </div>
+
+      
+
+      </div>
+    </div>
+  </div>
+  <script src="{{url_for('static', filename='carrinho.js')}}" type="module"></script>
+</body>
+</html>

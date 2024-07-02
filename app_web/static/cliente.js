@@ -1,18 +1,22 @@
+import { adicionarAoCarrinho, lerCarrinho, limparCarrinho, verificarSeProdutoEstaNoCarrinho } from "./crud_carrinho.js"
 
 getCatalogo().then(response => {mostrarCatalogo(response)})
 
-inputBusca = botaoBusca = document.getElementById("fsearch")
-botaoBusca = document.getElementById("fsearchbtn")
+let inputBusca = document.getElementById("fsearch")
+let botaoBusca = document.getElementById("fsearchbtn")
 
-botaoDefinirIntervalo = document.getElementById("botao-definir-intervalo") 
-divBuscaIntervalo = document.getElementById("quadradoGrande")
+let botaoDefinirIntervalo = document.getElementById("botao-definir-intervalo") 
+let divBuscaIntervalo = document.getElementById("quadradoGrande")
 
-botaoFecharIntervalo = document.getElementById("busca-intervalo-botao-fechar")
+let botaoFecharIntervalo = document.getElementById("busca-intervalo-botao-fechar")
 
-formIntervalo = document.getElementById("myForm");
+let formIntervalo = document.getElementById("myForm");
+
+let quantidadeCarrinho = document.getElementById("quantidade-items-carrinho")
+quantidadeCarrinho.innerHTML = lerCarrinho().length
 
 botaoBusca.addEventListener('click', () => {
-    catalogo = getCatalogo().then(
+    let catalogo = getCatalogo().then(
         catalogo =>
         {
             if(verificarBusca())
@@ -42,7 +46,7 @@ botaoFecharIntervalo.addEventListener('click', esconderBuscaIntervalo)
 
 formIntervalo.addEventListener('submit', function(event){
 
-    if(validarBuscaIntervalo() == false)
+    if(!validarBuscaIntervalo())
     {
         return false;
     }
@@ -93,6 +97,8 @@ async function mostrarCatalogo(dicionario)
     let nomeLivro;
     let autorLivro;
     let estoqueLivro; 
+    let precoLivro;
+    let urlLivro;
 
     let catalogo = document.getElementById("catalogo");
 
@@ -137,46 +143,42 @@ async function mostrarCatalogo(dicionario)
             painelPreco.className += "h6 text-center align-self-end";
             painelPreco.innerHTML = "Preço: R$" + precoLivro;
             quadradoGrande.appendChild(painelPreco);
-    
-            let painelEstoque = document.createElement("p");
-            painelEstoque.className += "quantidadeLivro h6 text-center align-self-end";
-            painelEstoque.innerHTML = "Estoque: " + estoqueLivro;
-            quadradoGrande.appendChild(painelEstoque);
 
-
-    
             let divBotoes = document.createElement("div");
-            divBotoes.className += "d-flex flex-row align-content-center justify-content-around"
+            divBotoes.className += "align-content-center justify-content-center text-center row"
             quadradoGrande.appendChild(divBotoes);
-
-            let formAdd = document.createElement("form");
-            formAdd.action = `http://127.0.0.1:5000/addEstoque/${key}`
             
-            let inputAdd = document.createElement("input");
-            inputAdd.className += "fonte btn-sm "
-            inputAdd.value = "+"; 
-            inputAdd.type = "submit";
-            formAdd.appendChild(inputAdd); 
-            divBotoes.appendChild(formAdd);
+            if(!verificarSeProdutoEstaNoCarrinho(key))
+            {
+                let inputAdd = document.createElement("input");
+                inputAdd.className += "fonte btn-sm btn-light border"
+                inputAdd.value = "Adicionar ao carrinho"; 
+                inputAdd.type = "submit";
+                let formAdd = document.createElement("form");
+                formAdd.action = ''
+                formAdd.appendChild(inputAdd); 
+                inputAdd.addEventListener("click", () => {adicionarAoCarrinho(key)})
+                divBotoes.appendChild(formAdd);
+            }
+            else
+            {
+                let textoJaAdicionado = document.createElement("p");
+                textoJaAdicionado.className += "fonte btn-sm"
+                textoJaAdicionado.innerHTML = "Já adicionado ao carrinho"
+                divBotoes.appendChild(textoJaAdicionado);
+                let inputAdd = document.createElement("input");
+                inputAdd.className += "fonte btn-sm btn-light border"
+                inputAdd.value = "Adicionar outro"; 
+                inputAdd.type = "submit";
+                let formAdd = document.createElement("form");
+                formAdd.action = ''
+                formAdd.appendChild(inputAdd); 
+                inputAdd.addEventListener("click", () => {adicionarAoCarrinho(key)})
+                divBotoes.appendChild(formAdd);
+               
+            }
+        
     
-    
-            let formSub = document.createElement("form");
-            formSub.action = `http://127.0.0.1:5000/subEstoque/${key}`
-            let inputSub = document.createElement("input");
-            inputSub.className += "fonte btn-sm  "
-            inputSub.value = "  -  "; 
-            inputSub.type = "submit";
-            formSub.appendChild(inputSub); 
-            divBotoes.appendChild(formSub);
-
-            let formDel = document.createElement("form");
-            formDel.action = `http://127.0.0.1:5000/removerlivro/${key}`
-            let inputDel = document.createElement("input");
-            inputDel.className += "fonte btn-sm "
-            inputDel.value = "X"; 
-            inputDel.type = "submit";
-            formDel.appendChild(inputDel); 
-            divBotoes.appendChild(formDel);
         });
 
     }
@@ -261,4 +263,15 @@ function verificaEscolhaIntervalo()
       document.getElementById("fultimaletra").disabled = true;
   
   }
+}
+
+function buscarLivro(dicionario, nomeDoLivro)
+{   
+    Object.entries(dicionario).forEach(([key, value]) => {
+        if(value['nome'] == nomeDoLivro)
+        {
+            return key
+        }
+        console.log(value)
+    });
 }

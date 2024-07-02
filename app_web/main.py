@@ -69,10 +69,17 @@ app = Flask(__name__)
 def principal():
     return render_template('index.html')
 
-@app.route('/Catalogo')
-def catalogo():
+@app.route('/administrador')
+def administrador():
+    return render_template('administrador.html')
 
+@app.route('/catalogo')
+def catalogo():
     return render_template('catalogo.html')
+
+@app.route('/carrinho')
+def carrinho():
+    return render_template('carrinho.html')
 
 @app.route('/getcatalogo', methods=['GET'])
 def get_catalogo():

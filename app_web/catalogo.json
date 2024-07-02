@@ -2,7 +2,7 @@
     "0": {
         "nome": "É assim que acaba",
         "autor": "Colleen Hoover",
-        "quantidade": 8,
+        "quantidade": 7,
         "preco": "21.90",
         "img": "https://m.media-amazon.com/images/I/9112cWOV-OL._SY385_.jpg"
     },
@@ -30,7 +30,7 @@
     "4": {
         "nome": "O Universo Numa Casca de Noz",
         "autor": "Stephen Hawking",
-        "quantidade": 4,
+        "quantidade": 3,
         "preco": "21.92",
         "img": "https://m.media-amazon.com/images/I/51wYh204mfL._SY445_SX342_.jpg"
     },
