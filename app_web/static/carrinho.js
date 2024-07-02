@@ -1,5 +1,5 @@
 
-import { removerDoCarrinho, verificarSeProdutoEstaNoCarrinho, lerCarrinho } from "./crud_carrinho.js";
+import { removerDoCarrinho, lerCarrinho, limparCarrinho } from "./crud_carrinho.js";
 window.removerDoCarrinho = removerDoCarrinho
 
 
@@ -85,6 +85,7 @@ function mostrarCarrinho(dicionario)
         total_custo_div.innerHTML = `Valor do carrinho: R$${soma_valor.toFixed(2)}`
 
         let div_frete = document.getElementById("div-frete");
+        let botaoFinalizarCompra = document.getElementById("botao-finalizar-compra");
         
         let frete = localStorage.getItem("frete")
         let resultado = document.createElement("div")
@@ -93,10 +94,15 @@ function mostrarCarrinho(dicionario)
             resultado.innerHTML = "Valor do frete: R$" + JSON.parse(frete).toFixed(2)
             let total_compra_div = document.getElementById("total-valor-compra")
             total_compra_div.innerHTML = `Valor total compra: R$${(parseFloat(soma_valor) + parseFloat(frete)).toFixed(2)}`
+
+            botaoFinalizarCompra.addEventListener('click', () => {
+                limparCarrinho();
+                localStorage.removeItem('frete')
+                window.location.href = "http://127.0.0.1:5000/comprafinalizada";
+            })
         }
         else
         {
-            let botaoFinalizarCompra = document.getElementById("botao-finalizar-compra");
             botaoFinalizarCompra.disabled = true
         }
         if(items_carrinho.length == 0)
@@ -108,6 +114,8 @@ function mostrarCarrinho(dicionario)
         {
             resultado.innerHTML = "É necessário calcular o frete!"
         }
+
+
 
         div_frete.appendChild(resultado)
     }

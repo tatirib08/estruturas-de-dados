@@ -178,5 +178,9 @@ def mapa():
 
     return jsonify({"frete": frete}), 201
 
+@app.route('/comprafinalizada')
+def compraFinalizada(): 
+    return render_template('comprafinalizada.html')
+
 app.run(debug = True)
 
